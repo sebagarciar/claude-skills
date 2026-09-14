@@ -29,6 +29,10 @@ optimized for Applicant Tracking Systems.
 Pull out, in the ad's own words: hard skills, tools, domain terms, seniority signals, and the
 pillars the role is organized around. Note the ad's language.
 
+Write these requirements to `<dir>/keywords.txt`, one per line, in the ad's own wording. This
+is what step 7 checks the built PDF against — a promise you can verify beats a promise you
+remember.
+
 ### 2. Score the bank
 
 Score every bullet in `master-cv.md` against those requirements. Rank within each role.
@@ -38,6 +42,10 @@ Score every bullet in `master-cv.md` against those requirements. Rank within eac
 Pick the strongest bullets per role. Rewrite them to mirror the ad's vocabulary, inside the truth
 rules. Rewrite the Professional Summary for the target role. Reorder the Technical Skills line so
 the tools the ad names come first.
+
+Name the target role once in the Professional Summary, only where it is honest — title match is
+one of the heaviest ATS ranking signals and a recruiter's first read. This changes the voice of
+the summary, so read it back before committing to it.
 
 Typical capacity at zero compression is 13 bullets plus a 3-line summary. Aim to fill the page.
 An under-filled page wastes the strongest asset Seba has, which is evidence.
@@ -61,28 +69,74 @@ python3 .claude/skills/tailor-cv/scripts/build_cv.py <dir>/cv-content.json "<dir
 
 Apply in this order. Never skip a rung.
 
-1. **Shorten wording.** The script reports overflow in points and lines. A bullet under roughly
-   110 characters occupies one line at 10pt across the 556pt text column. A bullet at 115 to 140
-   characters is spilling a nearly empty second line: trim that one first, it is the cheapest full
-   line on the page.
+1. **Shorten wording.** Check the overflow the script reports first, see below. A bullet under
+   roughly 110 characters occupies one line at 10pt across the 556pt text column. A bullet at 115
+   to 140 characters is spilling a nearly empty second line: trim that one first, it is the
+   cheapest full line on the page.
 2. **Compress typography.** Re-run without `--max-compress=0` to allow up to 5%. This scales font
    size, leading and gaps together, so proportions hold.
 3. **Cut the lowest-scoring bullet.** Only when 1 and 2 are exhausted.
 
+#### Measuring overflow precisely
+
+`overflow_points()` counts the real text lines on page 2 via `pypdf` and prices them at the
+current line-height, so the reported overflow is a genuine measurement, not a guess — it needs
+`pypdf` installed, and falls back to an unmeasured "~12pt (~1 line)" with a warning if it isn't.
+It is still an approximation (uniform line-height, not exact point position), so for a close call
+— deciding whether one more trim clears the page, or pricing a specific change before committing
+to it — measure the real height in the browser instead. Render the content at auto height and
+read it:
+
+```python
+import re, sys, json
+sys.path.insert(0, '.claude/skills/tailor-cv/scripts')
+import build_cv
+c = json.load(open('<dir>/cv-content.json'))
+h = re.sub(r'^.*?<style>', '<style>', build_cv.render_html(c, 1.0), count=1)
+open('<dir>/measure.html', 'w').write(
+    "<!doctype html><meta charset=utf-8><style>html,body{margin:0}"
+    ".page{width:612pt;background:#fff;padding:11pt 28pt 14pt 28pt}</style>"
+    "<div class=page id=pg>" + h + "</div>")
+```
+
+Open it with the browser preview tool and run:
+
+```js
+const PT = 96/72, pg = document.getElementById('pg');
+const hPt = pg.getBoundingClientRect().height / PT;
+JSON.stringify({heightPt: Math.round(hPt*10)/10, overflowPt: Math.round((hPt-792)*10)/10})
+```
+
+Anything at or under 792pt fits. Trim until `overflowPt` is negative, then build. Delete
+`measure.html` afterwards, it is not part of the output layout. The same trick prices a change
+before you commit to it: render the variant, measure it, then decide. That is how the n8n CV
+settled whether the contact line could carry both the personal site and GitHub. It could not,
+the line wrapped and cost 12pt.
+
 ### 7. Verify and report
 
 The script asserts one page and extracts the text layer back out of the PDF with `pypdf`, which is
-what an ATS does. It writes that text beside the PDF as `.pdf.txt`. Read it and confirm the
-keywords survived.
+what an ATS does. It writes that text beside the PDF as `.pdf.txt`.
+
+Check keyword coverage instead of eyeballing it:
+
+```bash
+python3 .claude/skills/tailor-cv/scripts/check_keywords.py <dir>/keywords.txt "<dir>/Sebastian Garcia Romero - <Company>.pdf.txt"
+```
+
+It prints which of step 1's requirements are present and which are missing. A miss is not
+automatically a bug — the bank may genuinely have no evidence for it — but it must be a decision,
+not an oversight.
 
 Write `notes.md` in the application folder: bullets selected, bullets dropped, rephrasings made,
-which fit-ladder rungs fired, and keyword coverage against the ad.
+which fit-ladder rungs fired, and the present/missing keyword list from `check_keywords.py`.
 
 ## Output layout
 
 ```
 job_search/applications/<company>-<role>/
   job-description.md
+  keywords.txt
   cv-content.json
   preview.html
   notes.md
@@ -90,7 +144,10 @@ job_search/applications/<company>-<role>/
   Sebastian Garcia Romero - <Company>.pdf.txt
 ```
 
-Filename is always `Sebastian Garcia Romero - <Company>.pdf`. Recruiters see the filename.
+Filename is always `Sebastian Garcia Romero - <Company>.pdf`. Recruiters see the filename. If the
+company name contains `&` or another character some upload forms mangle, use a filesystem-safe
+variant in the filename (e.g. "Click and Boat") — the real name still appears inside the CV and
+letter content, this only affects the filename on disk.
 
 ## Language
 
@@ -134,16 +191,22 @@ text, standard section headings, consistent date format. Do not add anything tha
 Entry fields are all optional. Omit `org` for a second role at the same employer, as with the
 Uber Courier & Marketplace Coordinator entry. `**bold**` and `*italic*` work inside any text.
 
+`org` is the company name only. An industry or size descriptor, e.g. "(Technology, $50bn)",
+goes in `desc` (the 9pt line), never appended in parentheses to `org` — a simpler ATS parser can
+store the whole ambiguous string as the employer name.
+
+Contact-line link text never carries a trailing slash: `sebasgarcia.dev`, not `sebasgarcia.dev/`.
+
 ## Preview
 
 To eyeball the page before or after building:
 
 ```python
-import sys, json
+import re, sys, json
 sys.path.insert(0, '.claude/skills/tailor-cv/scripts')
 import build_cv
 c = json.load(open('<dir>/cv-content.json'))
-h = build_cv.render_html(c, 1.0).replace('<!doctype html><meta charset=utf-8>', '')
+h = re.sub(r'^.*?<style>', '<style>', build_cv.render_html(c, 1.0), count=1)
 frame = ("<!doctype html><meta charset=utf-8><style>html,body{background:#8a8a8a;margin:0;"
          "height:100%;display:flex;align-items:center;justify-content:center;overflow:hidden}"
          ".s{zoom:.56}.page{width:612pt;height:792pt;background:#fff;padding:11pt 28pt 14pt 28pt;"
@@ -155,5 +218,6 @@ Then open that file with the browser preview tool and screenshot it.
 
 ## Requirements
 
-Google Chrome at `/Applications/Google Chrome.app`. `pypdf` for the text-layer check, optional.
-No pandoc, LaTeX or poppler needed.
+Google Chrome at `/Applications/Google Chrome.app`. `pypdf` is optional but strongly recommended:
+without it, both the ATS text-layer check and the overflow measurement degrade to an unmeasured
+guess, printed as a warning rather than failing silently. No pandoc, LaTeX or poppler needed.

@@ -16,11 +16,9 @@ import html
 import json
 import os
 import re
-import shutil
 import subprocess
 import sys
 import tempfile
-import zlib
 
 CHROME = "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome"
 
@@ -58,8 +56,11 @@ h2 {{
 .dates {{ font-size: {fs:.3f}pt; }}
 .edu-detail {{ font-style: italic; }}
 p.summary {{ text-align: justify; }}
-ul {{ margin: 0 0 0 {bullet_indent:.3f}pt; }}
-li {{ margin-top: {gap_bullet:.3f}pt; padding-left: 1pt; text-align: justify; }}
+ul {{ list-style: none; margin: 0 0 0 {bullet_indent:.3f}pt; }}
+li {{
+  margin-top: {gap_bullet:.3f}pt; padding-left: {bullet_hang:.3f}pt;
+  text-indent: -{bullet_hang:.3f}pt; text-align: justify;
+}}
 """
 
 INLINE = [
@@ -67,9 +68,17 @@ INLINE = [
     (re.compile(r"(?<!\*)\*(?!\*)(.+?)(?<!\*)\*(?!\*)"), r"<i>\1</i>"),
 ]
 
+# Chrome's line-breaker treats "-" as a break opportunity, which splits
+# compounds like "cross-functional" across a justified line. Wrap them so
+# the hyphen stays a normal, searchable character but can't be a break point.
+HYPHEN_RE = re.compile(r"[^\W_]+(?:-[^\W_]+)+")
+
 
 def rich(text):
     out = html.escape(str(text))
+    out = HYPHEN_RE.sub(
+        lambda m: f'<span style="white-space:nowrap">{m.group(0)}</span>', out
+    )
     for pat, rep in INLINE:
         out = pat.sub(rep, out)
     return out
@@ -80,8 +89,9 @@ def row(left, right, lclass="", rclass=""):
     return f'<div class="row"><span class="{lclass}">{rich(left)}</span>{r}</div>'
 
 
-def render_html(c, scale):
+def render_html(c, scale, title="cv"):
     fs = 10.0 * scale
+    bullet_hang = 9.0 * scale
     css = CSS.format(
         fs=fs,
         fs_name=14.0 * scale,
@@ -92,9 +102,10 @@ def render_html(c, scale):
         gap_entry=5.0 * scale,
         gap_bullet=1.2 * scale,
         bullet_indent=13.0 * scale,
+        bullet_hang=bullet_hang,
         **PAGE,
     )
-    b = [f"<!doctype html><meta charset=utf-8><style>{css}</style>"]
+    b = [f"<!doctype html><meta charset=utf-8><title>{html.escape(title)}</title><style>{css}</style>"]
     b.append(f'<div class="name">{rich(c["name"])}</div>')
     for line in c["contact"]:
         b.append(f'<div class="contact">{line}</div>')
@@ -118,7 +129,7 @@ def render_html(c, scale):
                 if e.get("bullets"):
                     b.append("<ul>")
                     for x in e["bullets"]:
-                        b.append(f"<li>{rich(x)}</li>")
+                        b.append(f"<li>&#8226;&nbsp;{rich(x)}</li>")
                     b.append("</ul>")
                 b.append("</div>")
         if sec["type"] == "bullets":
@@ -126,31 +137,27 @@ def render_html(c, scale):
     return "\n".join(b)
 
 
-def streams(data):
-    out = []
-    for m in re.finditer(rb"stream\r?\n", data):
-        s = m.end()
-        e = data.find(b"endstream", s)
-        try:
-            out.append(zlib.decompress(data[s:e]))
-        except zlib.error:
-            pass
-    return out
-
-
 def page_count(pdf_bytes):
     return len(re.findall(rb"/Type\s*/Page[^s]", pdf_bytes))
 
 
-def overflow_points(pdf_bytes):
-    """How far content runs onto page 2, in points."""
-    st = sorted(streams(pdf_bytes), key=len, reverse=True)
-    if len(st) < 2:
+def overflow_points(out_pdf, scale):
+    """How far content runs onto page 2, in points. Measured from the real
+    text layer via pypdf: count non-empty lines on page 2 and price each at
+    the current line-height. Falls back to an unmeasured guess (with a
+    warning) if pypdf isn't installed."""
+    try:
+        from pypdf import PdfReader
+    except ImportError:
+        print("WARNING: pypdf not installed - overflow is an unmeasured "
+              "guess. Install with `pip3 install pypdf` for a real number.",
+              file=sys.stderr)
+        return 12.0
+    pages = PdfReader(out_pdf).pages
+    if len(pages) < 2:
         return 0.0
-    last = st[1].decode("latin-1", "replace")
-    ys = [float(m.group(1)) for m in re.finditer(r"0 0 [\d.]+ ([\d.]+) cm", last)]
-    ys += [float(m.group(2)) for m in re.finditer(r"\.75 0 0 \.75 ([\d.-]+) ([\d.]+) cm", last)]
-    return max(ys) - PAGE["top"] if ys else 12.0
+    lines = [l for l in (pages[1].extract_text() or "").splitlines() if l.strip()]
+    return len(lines) * 11.5 * scale
 
 
 def print_pdf(html_text, out_pdf):
@@ -172,6 +179,8 @@ def extract_text(path):
     try:
         from pypdf import PdfReader
     except ImportError:
+        print("WARNING: pypdf not installed - ATS text-layer check "
+              "skipped. Install with `pip3 install pypdf`.", file=sys.stderr)
         return None
     return "\n".join(p.extract_text() or "" for p in PdfReader(path).pages)
 
@@ -188,6 +197,8 @@ def main():
     if not os.path.exists(CHROME):
         sys.exit(f"Chrome not found at {CHROME}")
 
+    title = os.path.splitext(os.path.basename(out_pdf))[0]
+
     steps = [1.0]
     s = 1.0
     while s > 1 - max_comp + 1e-9:
@@ -196,7 +207,7 @@ def main():
 
     last = None
     for scale in steps:
-        pdf = print_pdf(render_html(c, scale), out_pdf)
+        pdf = print_pdf(render_html(c, scale, title), out_pdf)
         pages = page_count(pdf)
         last = (scale, pages, pdf)
         if pages == 1:
@@ -212,7 +223,7 @@ def main():
             return 0
 
     scale, pages, pdf = last
-    over = overflow_points(pdf)
+    over = overflow_points(out_pdf, scale)
     lines = max(1, round(over / (11.5 * scale)))
     print(f"OVERFLOW  {pages} pages at max {max_comp*100:.0f}% compression. "
           f"Content exceeds one page by ~{over:.0f}pt (~{lines} line(s)). "

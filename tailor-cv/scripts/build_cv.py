@@ -57,10 +57,28 @@ h2 {{
 .edu-detail {{ font-style: italic; }}
 p.summary {{ text-align: justify; }}
 ul {{ list-style: none; margin: 0 0 0 {bullet_indent:.3f}pt; }}
+/* The bullet is a real text node inside a fixed-width inline-block, NOT inline
+   "•\xa0" text and NOT an absolutely-positioned ::before.
+
+   Inline "•\xa0" was the first version: Chrome justifies by stretching
+   whitespace, so that leading space grew by a different amount on every line
+   and the gap after "•" visibly varied bullet to bullet.
+
+   An absolute ::before fixed the gap but broke the PDF text layer, which is
+   what an ATS reads: the marker is extracted in paint order, not flow order,
+   so every bullet glyph detached and reappeared at the end of the PREVIOUS
+   bullet, leaving the real bullets with no leading marker to segment on.
+
+   A fixed-width inline-block gets both. Justification cannot stretch it
+   because it is not whitespace, and there is deliberately no whitespace
+   between the span and the text; the marker stays in flow, so it extracts in
+   the right order. Keep the span and the text adjacent in the markup. */
 li {{
   margin-top: {gap_bullet:.3f}pt; padding-left: {bullet_hang:.3f}pt;
-  text-indent: -{bullet_hang:.3f}pt; text-align: justify;
+  text-indent: -{bullet_hang:.3f}pt;
+  text-align: justify;
 }}
+li .bul {{ display: inline-block; width: {bullet_hang:.3f}pt; text-indent: 0; }}
 """
 
 INLINE = [
@@ -129,7 +147,7 @@ def render_html(c, scale, title="cv"):
                 if e.get("bullets"):
                     b.append("<ul>")
                     for x in e["bullets"]:
-                        b.append(f"<li>&#8226;&nbsp;{rich(x)}</li>")
+                        b.append(f'<li><span class="bul">&#8226;</span>{rich(x)}</li>')
                     b.append("</ul>")
                 b.append("</div>")
         if sec["type"] == "bullets":

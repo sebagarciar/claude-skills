@@ -30,12 +30,24 @@ Pull out, in the ad's own words: hard skills, tools, domain terms, seniority sig
 pillars the role is organized around. Note the ad's language.
 
 Write these requirements to `<dir>/keywords.txt`, one per line, in the ad's own wording. This
-is what step 7 checks the built PDF against — a promise you can verify beats a promise you
-remember.
+file is checked twice: against the draft in step 4, and against the built PDF in step 8 — a
+promise you can verify beats a promise you remember.
+
+Only a requirement that can be **evidenced** belongs in that file: a tool, a skill, a method, a
+domain, a credential, a scale or a seniority signal. The ad's culture-speak — "ruthlessly",
+"founder mindset", "bar raiser", "operators" — is tone, not a requirement. It belongs in the voice
+of the Professional Summary, never in a checklist. The test is step 5: if you would never ask Seba
+"do you have this?", it does not go in `keywords.txt`. Letting tone in there inflates the miss
+count with lines nobody can act on and buries the real gaps.
 
 ### 2. Score the bank
 
 Score every bullet in `master-cv.md` against those requirements. Rank within each role.
+
+If a **must-have** from the ad has no evidence anywhere in the bank, stop and say so in two lines
+before building anything. That is a go/no-go on the application and it is Seba's call, not a
+tailoring problem. See `MEMORY.md`. It is a different check from the ATS gaps in step 5 — the
+distinction is spelled out there.
 
 ### 3. Select and rephrase
 
@@ -50,14 +62,80 @@ the summary, so read it back before committing to it.
 Typical capacity at zero compression is 13 bullets plus a 3-line summary. Aim to fill the page.
 An under-filled page wastes the strongest asset Seba has, which is evidence.
 
-### 4. Show the draft before rendering
+### 4. Check ATS coverage on the draft
+
+Run the coverage check before showing Seba anything, against the draft rather than the PDF. That
+is the whole point: a gap has to surface while the CV is still editable and while he can still
+answer it.
+
+Write the draft to `<dir>/cv-content.json` first (schema below), then:
+
+```bash
+python3 .claude/skills/tailor-cv/scripts/check_keywords.py <dir>/keywords.txt <dir>/cv-content.json --bank job_search/master-cv.md
+```
+
+`--bank` splits the misses in two, because the two need opposite responses:
+
+- **Evidence in the bank, missing from the draft.** A selection decision, and it is yours. Either
+  reopen the selection or be ready to say why that bullet lost. Never hand this list to Seba as a
+  question — the answer is already in the bank.
+- **No evidence in the bank.** This is the list he sees in step 5. The bank may simply not know
+  about it yet.
+
+### 5. Show the draft and the ATS gaps before rendering
 
 Per `CLAUDE.md`, show Seba the selected and rephrased bullets before producing the PDF. Say which
 bullets were dropped and why.
 
-### 5. Build
+Then, underneath the draft, show the no-evidence list from step 4 under a heading that says what
+it is and what it is for:
 
-Write `cv-content.json` (schema below), then:
+```
+ATS gaps — the ad asks for these and the bank has no evidence
+  - Salesforce
+  - partner enablement
+  - B2B SaaS
+Do you have any of these? Tell me what you actually did and I will add it.
+```
+
+Rules for this section:
+
+- Only the no-evidence list goes here. A keyword the bank already covers is your problem to fix,
+  not his to answer.
+- Ask flat. No guessing on his behalf, no "you probably touched this at Uber" — that invents the
+  evidence and reduces him to confirming it.
+- Do not re-ask a gap he has already answered earlier in the same application.
+- If a gap is not something a person can have *done* or *used*, it is not a question — it means
+  step 1 let tone into `keywords.txt`. Fix the file and re-run step 4. Do not paper over it by
+  quietly dropping the line from the list you show him.
+- An empty list earns one line: "no ATS gaps, every requirement has evidence." That is a result,
+  not silence.
+
+**What he answers goes into `master-cv.md` first, never straight into the CV.** Truth rule 2 says
+a keyword only enters the CV if a bullet in the bank provides the evidence, and an answer in chat
+is not a bullet in the bank. Write the new bullet into the bank in the bank's own format, show it
+to him, then re-score and pull it into the CV. Two payoffs: the truth rule holds, and the next ad
+asking for the same thing already finds it.
+
+If he says there is no evidence for a gap, that is closed. Record it in `notes.md` and do not
+raise it again for this application.
+
+#### ATS gaps are not the must-have pre-flight
+
+Two different checks, at two different moments, with two different stakes.
+
+- **Must-have pre-flight** (step 2): a hard requirement has no evidence anywhere in the bank. Go
+  or no-go on the whole application, raised before any CV exists, so Seba can decide whether the
+  effort is worth spending.
+- **ATS gaps** (this step): the application is already worth making. These are keywords worth one
+  question each, never a reason to reopen the decision to apply.
+
+Do not merge them. Treating every ATS gap as doubt about the application turns a useful check into
+nagging.
+
+### 6. Build
+
+`cv-content.json` already exists from step 4. Fold in whatever step 5 changed, then:
 
 ```bash
 python3 .claude/skills/tailor-cv/scripts/build_cv.py <dir>/cv-content.json "<dir>/Sebastian Garcia Romero - <Company>.pdf" --max-compress=0
@@ -65,7 +143,7 @@ python3 .claude/skills/tailor-cv/scripts/build_cv.py <dir>/cv-content.json "<dir
 
 `--max-compress=0` first, so you find out honestly whether it fits.
 
-### 6. The fit ladder
+### 7. The fit ladder
 
 Apply in this order. Never skip a rung.
 
@@ -113,23 +191,29 @@ before you commit to it: render the variant, measure it, then decide. That is ho
 settled whether the contact line could carry both the personal site and GitHub. It could not,
 the line wrapped and cost 12pt.
 
-### 7. Verify and report
+### 8. Verify and report
 
 The script asserts one page and extracts the text layer back out of the PDF with `pypdf`, which is
 what an ATS does. It writes that text beside the PDF as `.pdf.txt`.
 
-Check keyword coverage instead of eyeballing it:
+Run the coverage check a second time, now against the extracted text layer:
 
 ```bash
-python3 .claude/skills/tailor-cv/scripts/check_keywords.py <dir>/keywords.txt "<dir>/Sebastian Garcia Romero - <Company>.pdf.txt"
+python3 .claude/skills/tailor-cv/scripts/check_keywords.py <dir>/keywords.txt "<dir>/Sebastian Garcia Romero - <Company>.pdf.txt" --bank job_search/master-cv.md
 ```
 
-It prints which of step 1's requirements are present and which are missing. A miss is not
-automatically a bug — the bank may genuinely have no evidence for it — but it must be a decision,
-not an oversight.
+This is not a repeat of step 4. Step 4 checked what was selected; this checks what survived
+rendering and the fit ladder. Rung 3 cuts a bullet, and a cut bullet takes its keywords with it,
+so a keyword that was present in the draft can be missing from the PDF. Any keyword that moved
+between the two runs is something you caused and must account for.
+
+A miss is not automatically a bug — the bank may genuinely have no evidence for it, and Seba may
+have confirmed as much in step 5 — but it must be a decision, not an oversight.
 
 Write `notes.md` in the application folder: bullets selected, bullets dropped, rephrasings made,
-which fit-ladder rungs fired, and the present/missing keyword list from `check_keywords.py`.
+which fit-ladder rungs fired, the present/missing keyword list from `check_keywords.py`, the ATS
+gaps put to Seba in step 5, and what he answered — including the gaps he confirmed he has no
+evidence for, so a later run does not ask again.
 
 ## Output layout
 

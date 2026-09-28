@@ -23,8 +23,9 @@ together out loud.
 looking for. Salary expectations. Notice period and availability. Work authorisation. Location
 and office days. Are you in other processes.
 
-**For Seba specifically:** the MBA finishing December 2026 and the EU work permit both come up
-here, every time. Both need a clean, unhesitant, ten-second answer. Prepare them.
+**For Seba specifically:** availability and the EU work permit both come up here, every time.
+Availability is October 2026; the MBA ends in December 2026, which is a separate fact, never the
+start date. Both need a clean, unhesitant, ten-second answer. Prepare them.
 
 **The trap:** treating this as a formality. Recruiters cut more candidates than anyone else in
 the process.
@@ -80,6 +81,41 @@ Seba's own experience connects. See `question-banks.md`.
 
 **The trap:** presenting a framework instead of an answer. Structure first, then commit to a
 recommendation and say what would change your mind.
+
+---
+
+## Trial day, take-home or case day (half day to full day)
+
+**Who:** the team he would work with, often the founders at a startup.
+
+**Their fear:** someone who interviews well and then cannot produce under real conditions.
+
+**What they are really testing:** output under time pressure, writing that needs no editing,
+whether he asks good questions early, and what he is like to work next to for a day (lunch is
+part of it).
+
+**Spotting it:** the ad may say it directly. Sometimes it hides in the role's own scope (for
+example, a generalist role that is asked to "prepare and run structured trial days" for other
+hires): a company that runs trial days for every business hire will almost certainly run one
+for this one. Mark it `[inferred]` and have Seba
+ask in the first call.
+
+**How to prepare it: build a mock day.** Put it in the HTML guide and in
+`interview/mock-trial-day/`:
+
+- **A timed schedule** that looks like the real day: brief, tasks, lunch, debrief.
+- **Three to five tasks, one per pillar of the ad.** Each built from a real problem of this
+  company (from Track A of the research), never a generic case. Typical set for a generalist
+  role: a one-page strategy memo, an operations task done by hand, the same task automated with
+  an AI coding agent, and a piece of writing (investor update, brief).
+- **Practice data, clearly labelled as made up.** Save data files (CSV) so Seba can point Claude
+  Code at them. Plant specific, findable issues.
+- **Real-world facts he must verify himself**, with a source. Part of the test is not trusting
+  memory.
+- **A strong-versus-weak scoring guide** per task.
+- **An answer key, hidden** until he opens it.
+- A note to save his outputs in `interview/drills/` and send them back for scoring against the
+  guide.
 
 ---
 

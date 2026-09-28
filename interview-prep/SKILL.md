@@ -15,8 +15,13 @@ tied to something this company does, and every answer is tied to something Seba 
 2. `prep.md` — the brief. Stage by stage: who, what they are testing, the questions, the
    answer beats, the lines worth landing, the questions Seba asks them, and his weak spots
    for this specific role with prepared responses.
-3. `drills/<date>-<stage>.md` — a live mock. Seba's own answers, verbatim, with feedback.
-4. `debrief.md` — what actually got asked, written after the real interview.
+3. `<company>-prep.html` — **the default final deliverable.** One navigable page with everything
+   from `research.md` and `prep.md`, plus diagrams. The markdown files stay the source of truth;
+   the HTML is what Seba reads before the call.
+4. `<product>-audit.md` — when the company has a public product worth inspecting.
+5. `mock-trial-day/` — practice data files, when the process includes a trial day, take-home or case.
+6. `drills/<date>-<stage>.md` — a live mock. Seba's own answers, verbatim, with feedback.
+7. `debrief.md` — what actually got asked, written after the real interview.
 
 ## Inputs
 
@@ -61,6 +66,12 @@ tight brief on one stage, a final round next week justifies the full map.
 Follow `references/research.md`. Two tracks, run together: what the company is, and how the
 company interviews. Write `interview/research.md`.
 
+Three things that are easy to skip and pay off most (details in the reference):
+pull the company's full job board and read the other open roles; work out the one number that
+makes the business click and answer the practical mechanics (who adopts, who pays, onboarding
+effort) up front; and, if there is a public product, inspect it and write an audit, checking
+side effects before ever suggesting Seba try it.
+
 ### Phase 2 — Gap check, then interrogate Seba
 
 This is the phase that stops the skill being capped by what Seba has already written down.
@@ -94,8 +105,22 @@ not the way a cover letter reads.
 
 ### Phase 4 — Show it before going further
 
-Per `CLAUDE.md`, show Seba the brief and let him react before running any drill. He will correct
+Per the root `CLAUDE.md` ("Plan first"), show Seba the brief and let him react before running any drill. He will correct
 framings and kill answers that are not his. Those corrections are worth more than the draft.
+
+### Phase 4b — Build the HTML guide (default, every time)
+
+Once the brief exists, build `interview/<company>-prep.html` following `references/html-guide.md`
+and send it with `SendUserFile` (display `render`). Do not wait to be asked: Seba chose HTML as the
+default on 2026-09-28. It is a local file, not a published artifact, unless he asks to share it.
+
+Whenever the markdown changes later (a follow-up question, a new finding, a correction), update
+the HTML in the same turn, in the section where the reader would look for it, and add it to the
+navigation. Follow-up questions Seba asks during prep are a sign the first draft missed something:
+answer in chat, then fold the answer into the guide.
+
+If the process includes a trial day, take-home or case, the guide includes a mock day built per
+`references/stages.md`.
 
 ### Phase 5 — Drill
 
@@ -120,8 +145,14 @@ job_search/applications/<company>-<role>/
   interview/
     research.md
     prep.md
+    <company>-prep.html        (default final deliverable)
+    <product>-audit.md         (if the company has a public product)
+    mock-trial-day/            (if there is a trial day, take-home or case)
     drills/2026-09-15-hiring-manager.md
     debrief.md
+
+If the folder does not exist yet (no `tailor-cv` run), create it and save the pasted ad as
+`job-description.md`.
 ```
 
 ## Language

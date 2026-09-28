@@ -58,7 +58,7 @@ Write every answer straight into `job_search/story-bank.md` in the format in
 `story-bank-format.md`. Use his words. Tighten grammar and cut filler, but do not restyle a
 story into corporate prose: it has to sound like him when he says it out loud.
 
-Per `MEMORY.md`, when the raw material is Seba's own words the first pass is grammar and
+Per `context/writing_style.md` Part 2 ("When the source material is Seba's own draft"), when the raw material is Seba's own words the first pass is grammar and
 clarity only. Flag any structural change as a question rather than rewriting silently.
 
 Show him what was written before moving on.

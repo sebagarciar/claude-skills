@@ -46,8 +46,8 @@ Score every bullet in `master-cv.md` against those requirements. Rank within eac
 
 If a **must-have** from the ad has no evidence anywhere in the bank, stop and say so in two lines
 before building anything. That is a go/no-go on the application and it is Seba's call, not a
-tailoring problem. See `MEMORY.md`. It is a different check from the ATS gaps in step 5 — the
-distinction is spelled out there.
+tailoring problem. See `job_search/CLAUDE.md`. It is a different check from the ATS gaps in step 5;
+the distinction is spelled out at the end of step 5 below.
 
 ### 3. Select and rephrase
 
@@ -58,6 +58,19 @@ the tools the ad names come first.
 Name the target role once in the Professional Summary, only where it is honest — title match is
 one of the heaviest ATS ranking signals and a recruiter's first read. This changes the voice of
 the summary, so read it back before committing to it.
+
+**The summary may not restate a bullet.** Before committing it, take every number, claim and
+employer name in it and look for the bullet or section header that already carries it. Anything
+that has a match comes out, and the line goes to something only the summary can say: years of
+experience, the span of disciplines, the target role, the shape of the career. Full rule and the
+reasoning in `context/writing_style.md` Part 2, under CV. This check is cheap to run and easy to
+skip, because a recap reads fine in isolation — it only looks wrong next to the bullets.
+
+**Then date-check what is left.** The summary carries the years figure, so every claim beside it
+inherits that span. For each element, name the bullet and the date behind it. Anything whose
+evidence sits only in a short role or only in a personal project comes out of the summary and goes
+on the Technical Skills line instead, which reads as "tools he can use" rather than six years of
+doing it. A tool list is the usual offender. Same file, next rule.
 
 Typical capacity at zero compression is 13 bullets plus a 3-line summary. Aim to fill the page.
 An under-filled page wastes the strongest asset Seba has, which is evidence.
@@ -84,7 +97,7 @@ python3 .claude/skills/tailor-cv/scripts/check_keywords.py <dir>/keywords.txt <d
 
 ### 5. Show the draft and the ATS gaps before rendering
 
-Per `CLAUDE.md`, show Seba the selected and rephrased bullets before producing the PDF. Say which
+Per the root `CLAUDE.md` ("Plan first"), show Seba the selected and rephrased bullets before producing the PDF. Say which
 bullets were dropped and why.
 
 Then, underneath the draft, show the no-evidence list from step 4 under a heading that says what
@@ -280,6 +293,22 @@ goes in `desc` (the 9pt line), never appended in parentheses to `org` — a simp
 store the whole ambiguous string as the employer name.
 
 Contact-line link text never carries a trailing slash: `sebasgarcia.dev`, not `sebasgarcia.dev/`.
+
+**When the contact line links to the personal site, tag the href for traffic tracking.** Change
+only the `href` target from `https://sebasgarcia.dev/` to `https://sebasgarcia.dev/?src=<slug>`.
+The visible text stays exactly `sebasgarcia.dev` — nothing looks different on the printed page.
+
+`<slug>` = the target company's name: lowercase, ASCII only (strip accents/diacritics, e.g. Müller
+→ muller), spaces and punctuation replaced with single hyphens (collapse repeats, no leading or
+trailing hyphen), truncated to 40 characters. Examples: Notion → `notion`, "Acme Corp" → `acme-corp`.
+
+```html
+<a href="https://sebasgarcia.dev/?src=notion">sebasgarcia.dev</a>
+```
+
+Do not tag GitHub. When the contact line links to GitHub instead (technical roles — see the
+single-link rule in `job_search/CLAUDE.md`), leave that href as-is: GitHub visits aren't tracked and the parameter
+would just look odd in the URL.
 
 ## Preview
 

@@ -75,6 +75,10 @@ doing it. A tool list is the usual offender. Same file, next rule.
 Typical capacity at zero compression is 13 bullets plus a 3-line summary. Aim to fill the page.
 An under-filled page wastes the strongest asset Seba has, which is evidence.
 
+No role gets more than 5 bullets; each role entry counts on its own. Past 5 a recruiter skims, and
+the extra bullets dilute the best ones. If a role wants a sixth, the selection isn't finished: cut
+the weakest match and fill the page across roles, not by stacking one.
+
 ### 4. Check ATS coverage on the draft
 
 Run the coverage check before showing Seba anything, against the draft rather than the PDF. That

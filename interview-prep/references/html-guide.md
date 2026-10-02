@@ -10,8 +10,9 @@ colour and its own diagrams.
 Order follows how Seba uses it: the ten-minute version first, then the company, then him, then
 proof and practice. Every section has a one-line "why this matters" under the heading.
 
-1. **Start here.** The 60-second version and a checklist for before the call (tick boxes,
-   remembered in the browser).
+1. **Start here.** The one-page card from `card.md` (intro, three stories, key line, three
+   questions, three reminders) and a checklist for before the call (tick boxes, remembered in
+   the browser).
 2. **The company.** How the business works (with a diagram), the worked number (with a chart),
    the practical mechanics (who adopts, who pays, onboarding effort), how they make money,
    funding and team, who the interviewer is (timeline of their career plus what it predicts).

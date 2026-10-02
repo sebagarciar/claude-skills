@@ -90,7 +90,11 @@ If the company has a public product, public code, an API, a free tier or a demo,
 This matters most when the role asks for hands-on, technical or AI skills, because "we'll ask you
 to show us" is best answered with something about *their* product. Reading a company's public
 repos and finding a real bug plus a design gap tied to their core thesis can be the strongest
-single piece of prep for a call.
+single piece of prep for a call. It can also come to nothing: in one call the interviewer called
+the audited product something the team tried on a weekend. Use an audit to understand the
+business. Before Seba raises a finding, check how central the product is to the company
+(homepage, job ads, founder posts), and if that is unclear, prepare it as a question, not a
+critique.
 
 - Read, do not run. Clone into the scratchpad, never install into Seba's setup unprompted.
 - **Check side effects before suggesting Seba try it.** Some products send real emails, create

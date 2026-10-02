@@ -15,6 +15,8 @@ tied to something this company does, and every answer is tied to something Seba 
 2. `prep.md` — the brief. Stage by stage: who, what they are testing, the questions, the
    answer beats, the lines worth landing, the questions Seba asks them, and his weak spots
    for this specific role with prepared responses.
+2b. `card.md` — **the one-page card.** What Seba actually carries into the call. Built from
+   `prep.md`, never instead of it. See Phase 3b.
 3. `<company>-prep.html` — **the default final deliverable.** One navigable page with everything
    from `research.md` and `prep.md`, plus diagrams. The markdown files stay the source of truth;
    the HTML is what Seba reads before the call.
@@ -28,6 +30,8 @@ tied to something this company does, and every answer is tied to something Seba 
 - **The job ad.** Usually already at `job_search/applications/<company>-<role>/job-description.md`.
 - **`job_search/master-cv.md`.** The bullet bank. Facts, metrics, dates.
 - **`job_search/story-bank.md`.** Situations, feedback, failures, lessons. The narrative material.
+  Its **Interview lessons** section is how Seba comes across in the room: every brief, card and
+  drill applies it.
 - **`job_search/applications/<company>-<role>/notes.md`.** If `tailor-cv` ran, this says which
   bullets were selected and which keywords were targeted. The interviewer is reading that CV.
   Prepare for the CV that was actually sent.
@@ -66,11 +70,12 @@ tight brief on one stage, a final round next week justifies the full map.
 Follow `references/research.md`. Two tracks, run together: what the company is, and how the
 company interviews. Write `interview/research.md`.
 
-Three things that are easy to skip and pay off most (details in the reference):
-pull the company's full job board and read the other open roles; work out the one number that
-makes the business click and answer the practical mechanics (who adopts, who pays, onboarding
-effort) up front; and, if there is a public product, inspect it and write an audit, checking
-side effects before ever suggesting Seba try it.
+Three things that are easy to skip (details in the reference): pull the company's full job
+board and read the other open roles; work out the one number that makes the business click and
+answer the practical mechanics (who adopts, who pays, onboarding effort) up front; and, if there
+is a public product, inspect it and write an audit, checking side effects before ever suggesting
+Seba try it. The audit is for understanding the business, not a talking point by default: weight
+it by how much the company itself cares about that product.
 
 ### Phase 2 — Gap check, then interrogate Seba
 
@@ -103,6 +108,21 @@ Answers must be *speakable*. Sixty to ninety seconds spoken, which is roughly 15
 Short sentences. Data over adjectives. Read `context/writing_style.md` and write the way he talks,
 not the way a cover letter reads.
 
+### Phase 3b — The one-page card
+
+One brief had nine sections plus a product audit and a mock trial day, and almost none of it
+came up in a 17-minute call. The brief is the thinking; the card is what he can hold in his
+head. Write `interview/card.md`, one page, nothing else on it:
+
+1. **The 60-second intro.** Spoken, in his voice, per the intro rule in the Interview lessons.
+2. **Three stories.** Handle plus the one number, each pointing to its `story-bank.md` entry.
+   Picked for the questions this interviewer is most likely to ask.
+3. **One key line.** The sentence connecting his experience to their core problem.
+4. **Three questions for them.**
+5. **Three reminders** from the Interview lessons that matter most for this stage.
+
+If something does not fit on the card, it is not for this call.
+
 ### Phase 4 — Show it before going further
 
 Per the root `CLAUDE.md` ("Plan first"), show Seba the brief and let him react before running any drill. He will correct
@@ -130,8 +150,10 @@ what he actually said, not what the brief suggested he say.
 
 ### Phase 6 — Debrief
 
-After the real interview, ask what actually got asked, what landed, what did not. Write
-`interview/debrief.md` and push anything new back into `story-bank.md`. The next round at this
+After the real interview, ask what actually got asked, what landed, what did not. If Seba has a
+transcript, read it: it beats memory. Write `interview/debrief.md` and push anything new back into
+`story-bank.md`: new situations as stories, patterns in how he came across as lines in its
+Interview lessons section. The next round at this
 company, and the next interview anywhere, both get sharper from it.
 
 Offer this proactively when a session opens with an interview that has already happened.
@@ -145,6 +167,7 @@ job_search/applications/<company>-<role>/
   interview/
     research.md
     prep.md
+    card.md                    (the one-page card)
     <company>-prep.html        (default final deliverable)
     <product>-audit.md         (if the company has a public product)
     mock-trial-day/            (if there is a trial day, take-home or case)
@@ -165,4 +188,5 @@ prepare the key lines in both, since a memorised line in the wrong language is w
 
 A full research pass plus a five-stage map is a lot of document. Match the output to what is
 actually coming up. One stage in two days means one stage in the brief, and a note that the rest
-is available. Do not hand Seba forty pages the night before a thirty-minute recruiter call.
+is available. Do not hand Seba forty pages the night before a thirty-minute recruiter call. The
+card is always the last thing he reads before the call.

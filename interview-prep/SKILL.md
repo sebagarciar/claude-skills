@@ -39,6 +39,14 @@ tied to something this company does, and every answer is tied to something Seba 
 
 Read all of them before writing anything. Assumptions are the enemy.
 
+## Scope: no logistics
+
+Never prepare logistics: salary, location, relocation, office days, willingness to work long
+hours, notice period, start date, work authorisation, other processes. They are the candidate's
+own calls, made in the room. Do not research them, draft answers, list them as open items or ask
+about them. If the recruiter asks, the candidate answers. This overrides any playbook line in
+`references/` that mentions them.
+
 ## Truth rules — non-negotiable
 
 1. **Never invent a company fact.** Not a revenue figure, a product launch, a leadership name,
@@ -108,6 +116,16 @@ Answers must be *speakable*. Sixty to ninety seconds spoken, which is roughly 15
 Short sentences. Data over adjectives. Read `context/writing_style.md` and write the way he talks,
 not the way a cover letter reads.
 
+### Phase 3a — CV defense map
+
+The interviewer reads the CV that was sent, so the first thing they probe is its claims. From the
+`.pdf.txt` in the application folder, take the top five or six bullets, the ones with numbers.
+For each, write a line in `prep.md`: the story-bank entry behind it, and its baseline, his
+contribution, the mechanism, the timeframe and what he would do differently. A bullet with a
+number but no mechanism is a weak spot: ask Seba, then write the answer into `story-bank.md`
+(Phase 2 rules). Do this before the question banks. A claim he cannot explain costs more than
+a company fact he does not know.
+
 ### Phase 3b — The one-page card
 
 One brief had nine sections plus a product audit and a mock trial day, and almost none of it
@@ -115,6 +133,7 @@ came up in a 17-minute call. The brief is the thinking; the card is what he can 
 head. Write `interview/card.md`, one page, nothing else on it:
 
 1. **The 60-second intro.** Spoken, in his voice, per the intro rule in the Interview lessons.
+   Ninety seconds is the ceiling for "tell me about yourself".
 2. **Three stories.** Handle plus the one number, each pointing to its `story-bank.md` entry.
    Picked for the questions this interviewer is most likely to ask.
 3. **One key line.** The sentence connecting his experience to their core problem.

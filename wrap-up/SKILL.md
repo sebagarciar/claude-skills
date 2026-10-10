@@ -51,11 +51,8 @@ behavior. Zero is a valid and common result.
 
 ## Step 4: Route each survivor
 
-Use the routing in `MEMORY.md` → "Where each new lesson goes":
-
-- How something written in Seba's name sounds or is framed → `context/writing_style.md`, Part 2
-- A fact or decision that only matters inside one folder → that folder's `CLAUDE.md`
-- Everything else → `MEMORY.md`, under the matching section heading
+Use the routing in `MEMORY.md` → "Where each new lesson goes". It is the only copy, so don't
+restate it here. A lesson about how a skill behaves goes in that skill's own file.
 
 ## Step 5: Propose
 
@@ -80,7 +77,7 @@ Then ask Seba to answer yes or no per item (he can also edit the wording).
   `MEMORY.md` rules are a bold one-line rule, then a short explanation, then "General rule:"
   where relevant. Match what's already there.
 - For a sharpen or merge, edit the existing rule in place. Don't append a second version.
-- No dates, session logs, "learned today" notes or changelog lines.
+- No dates, session logs, "learned today" notes or changelog lines, and no em dashes.
 - Don't touch anything Seba didn't approve, including typos or formatting you notice
   along the way. Mention them instead.
 

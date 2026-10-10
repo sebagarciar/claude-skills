@@ -12,20 +12,14 @@ supports, and say which ones are inferred.
 
 **Who:** a recruiter or sourcer. Usually not a domain expert.
 
-**Their fear:** wasting the hiring manager's time, and losing a candidate late over money,
-location or timing.
+**Their fear:** wasting the hiring manager's time.
 
 **What they are really testing:** can you explain your background in two minutes without
-rambling, are the logistics workable, is the motivation real, and does the story on the CV hold
+rambling, is the motivation real, and does the story on the CV hold
 together out loud.
 
 **Nearly always asked:** walk me through your background. Why us. Why this role. What are you
-looking for. Salary expectations. Notice period and availability. Work authorisation. Location
-and office days. Are you in other processes.
-
-**For Seba specifically:** availability and the EU work permit both come up here, every time.
-Availability is October 2026; the MBA ends in December 2026, which is a separate fact, never the
-start date. Both need a clean, unhesitant, ten-second answer. Prepare them.
+looking for. (Logistics questions also come up. Do not prepare them: see SKILL.md, Scope.)
 
 **The trap:** treating this as a formality. Recruiters cut more candidates than anyone else in
 the process.

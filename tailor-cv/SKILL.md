@@ -79,6 +79,20 @@ No role gets more than 5 bullets; each role entry counts on its own. Past 5 a re
 the extra bullets dilute the best ones. If a role wants a sixth, the selection isn't finished: cut
 the weakest match and fill the page across roles, not by stacking one.
 
+**Verb audit.** Truth rule 3 says rephrasing may not change what happened, and the verb is where
+it slips first: "coordinated" becomes "produced", "reported" becomes "drove resolution". For every
+rephrased bullet, put its verb next to the verb in the bank bullet. If the new verb claims more
+ownership or more effect than the old one, put the old verb back. Name three kinds of slip when
+you check: an invented fact (a tool or number not in the bank), an inferred result (an outcome
+nobody measured) and an inflated verb. "Spearheaded", "orchestrated", "leveraged" and "drove" are
+inflated by default. They stay only if the bank bullet says the same thing. List any verb you
+changed back in `notes.md`.
+
+**Subtraction check.** Tailoring is not only adding the ad's words. Name what this version
+removed or demoted compared with the bank: which bullets, which skills. A CV that gained keywords
+and lost nothing is not tailored, it is the master CV with a new summary. If nothing was removed,
+reopen the selection.
+
 ### 4. Check ATS coverage on the draft
 
 Run the coverage check before showing Seba anything, against the draft rather than the PDF. That
@@ -227,8 +241,15 @@ between the two runs is something you caused and must account for.
 A miss is not automatically a bug — the bank may genuinely have no evidence for it, and Seba may
 have confirmed as much in step 5 — but it must be a decision, not an oversight.
 
+**Eight-second test.** Recruiters decide on the top third of page one in about eight seconds.
+Read only the name, contact line, summary and first role's title and first two bullets from the
+`.pdf.txt`. Can a stranger name the target role and one number from that alone? If the role is
+not obvious, the summary is the fix. If no number shows, reorder the first role's bullets so the
+strongest metric sits first.
+
 Write `notes.md` in the application folder: bullets selected, bullets dropped, rephrasings made,
-which fit-ladder rungs fired, the present/missing keyword list from `check_keywords.py`, the ATS
+which fit-ladder rungs fired, what the version removed or demoted (subtraction check), verbs put
+back after the verb audit, the present/missing keyword list from `check_keywords.py`, the ATS
 gaps put to Seba in step 5, and what he answered — including the gaps he confirmed he has no
 evidence for, so a later run does not ask again.
 

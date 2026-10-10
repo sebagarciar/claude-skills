@@ -79,9 +79,8 @@ The questions that lose offers. Every brief has this section, and it names thing
 **How to find them.** Diff the job ad against `master-cv.md` and list every requirement the
 evidence does not cover: missing tool, missing domain, missing years, missing scale. Then add
 the questions any process asks that the CV cannot answer on its own, which usually means the
-reason for each move between jobs, gaps in the timeline, availability and start date, work
-authorisation, location and how permanent it is, salary expectations, and whether the title
-being applied for is a step up or a step down.
+reason for each move between jobs, gaps in the timeline, and whether the title being applied
+for is a step up or a step down.
 
 **How to build the answer.** Acknowledge the fact in one sentence with no defensiveness. Give
 the closest real evidence. Say what would be done about the gap. Stop. Do not over-explain: the

@@ -11,19 +11,19 @@ tied to something this company does, and every answer is tied to something Seba 
 
 ## What this produces
 
-1. `research.md` — the company, the business, the team, the process. Dated and sourced.
-2. `prep.md` — the brief. Stage by stage: who, what they are testing, the questions, the
+1. `research.md`: the company, the business, the team, the process. Dated and sourced.
+2. `prep.md`: the brief. Stage by stage: who, what they are testing, the questions, the
    answer beats, the lines worth landing, the questions Seba asks them, and his weak spots
    for this specific role with prepared responses.
-2b. `card.md` — **the one-page card.** What Seba actually carries into the call. Built from
+2b. `card.md`: **the one-page card.** What Seba actually carries into the call. Built from
    `prep.md`, never instead of it. See Phase 3b.
-3. `<company>-prep.html` — **the default final deliverable.** One navigable page with everything
+3. `<company>-prep.html`: **the default final deliverable.** One navigable page with everything
    from `research.md` and `prep.md`, plus diagrams. The markdown files stay the source of truth;
    the HTML is what Seba reads before the call.
-4. `<product>-audit.md` — when the company has a public product worth inspecting.
-5. `mock-trial-day/` — practice data files, when the process includes a trial day, take-home or case.
-6. `drills/<date>-<stage>.md` — a live mock. Seba's own answers, verbatim, with feedback.
-7. `debrief.md` — what actually got asked, written after the real interview.
+4. `<product>-audit.md`: when the company has a public product worth inspecting.
+5. `mock-trial-day/`: practice data files, when the process includes a trial day, take-home or case.
+6. `drills/<date>-<stage>.md`: a live mock. Seba's own answers, verbatim, with feedback.
+7. `debrief.md`: what actually got asked, written after the real interview.
 
 ## Inputs
 
@@ -47,7 +47,7 @@ own calls, made in the room. Do not research them, draft answers, list them as o
 about them. If the recruiter asks, the candidate answers. This overrides any playbook line in
 `references/` that mentions them.
 
-## Truth rules — non-negotiable
+## Truth rules: non-negotiable
 
 1. **Never invent a company fact.** Not a revenue figure, a product launch, a leadership name,
    a strategy, or a piece of news. Seba may repeat it in the room. A confident invented number
@@ -63,7 +63,7 @@ about them. If the recruiter asks, the candidate answers. This overrides any pla
 
 ## Workflow
 
-### Phase 0 — Locate the role
+### Phase 0: Locate the role
 
 Find or create `job_search/applications/<company>-<role>/`. If there is no `job-description.md`,
 ask Seba for the ad before going further: without it the research has no target. If the folder
@@ -73,7 +73,7 @@ that was sent.
 Ask which stage is coming up and when. That decides depth: a recruiter screen tomorrow needs a
 tight brief on one stage, a final round next week justifies the full map.
 
-### Phase 1 — Research
+### Phase 1: Research
 
 Follow `references/research.md`. Two tracks, run together: what the company is, and how the
 company interviews. Write `interview/research.md`.
@@ -85,7 +85,7 @@ is a public product, inspect it and write an audit, checking side effects before
 Seba try it. The audit is for understanding the business, not a talking point by default: weight
 it by how much the company itself cares about that product.
 
-### Phase 2 — Gap check, then interrogate Seba
+### Phase 2: Gap check, then interrogate Seba
 
 This is the phase that stops the skill being capped by what Seba has already written down.
 
@@ -99,24 +99,24 @@ This is the phase that stops the skill being capped by what Seba has already wri
 
 Follow `references/elicitation.md` for how to ask so the answers are usable.
 
-### Phase 3 — Build the brief
+### Phase 3: Build the brief
 
 Follow `references/stages.md` for the stage playbooks and `references/question-banks.md` for
 what to predict at each one. Write `interview/prep.md`.
 
 Answer format is **beats plus key lines**, never a script:
 
-- **Beats** — the four or five moves of the answer, one line each, in order.
-- **Evidence** — the exact metric or fact, quoted from the bank so it is right.
-- **Key lines** — two or three sentences worth saying close to verbatim. Normally the opening
+- **Beats**: the four or five moves of the answer, one line each, in order.
+- **Evidence**: the exact metric or fact, quoted from the bank so it is right.
+- **Key lines**: two or three sentences worth saying close to verbatim. Normally the opening
   sentence and the sentence carrying the number.
-- **Trap** — what would make this answer land badly, when it is not obvious.
+- **Trap**: what would make this answer land badly, when it is not obvious.
 
 Answers must be *speakable*. Sixty to ninety seconds spoken, which is roughly 150 to 220 words.
 Short sentences. Data over adjectives. Read `context/writing_style.md` and write the way he talks,
 not the way a cover letter reads.
 
-### Phase 3a — CV defense map
+### Phase 3a: CV defense map
 
 The interviewer reads the CV that was sent, so the first thing they probe is its claims. From the
 `.pdf.txt` in the application folder, take the top five or six bullets, the ones with numbers.
@@ -126,7 +126,7 @@ number but no mechanism is a weak spot: ask Seba, then write the answer into `st
 (Phase 2 rules). Do this before the question banks. A claim he cannot explain costs more than
 a company fact he does not know.
 
-### Phase 3b — The one-page card
+### Phase 3b: The one-page card
 
 One brief had nine sections plus a product audit and a mock trial day, and almost none of it
 came up in a 17-minute call. The brief is the thinking; the card is what he can hold in his
@@ -142,12 +142,12 @@ head. Write `interview/card.md`, one page, nothing else on it:
 
 If something does not fit on the card, it is not for this call.
 
-### Phase 4 — Show it before going further
+### Phase 4: Show it before going further
 
 Per the root `CLAUDE.md` ("Plan first"), show Seba the brief and let him react before running any drill. He will correct
 framings and kill answers that are not his. Those corrections are worth more than the draft.
 
-### Phase 4b — Build the HTML guide (default, every time)
+### Phase 4b: Build the HTML guide (default, every time)
 
 Once the brief exists, build `interview/<company>-prep.html` following `references/html-guide.md`
 and send it with `SendUserFile` (display `render`). Do not wait to be asked: Seba chose HTML as the
@@ -161,13 +161,13 @@ answer in chat, then fold the answer into the guide.
 If the process includes a trial day, take-home or case, the guide includes a mock day built per
 `references/stages.md`.
 
-### Phase 5 — Drill
+### Phase 5: Drill
 
 Only when Seba asks, or when he agrees after seeing the brief. Follow `references/drill.md`.
 The drill logs his answers verbatim to `interview/drills/<date>-<stage>.md` so he can review
 what he actually said, not what the brief suggested he say.
 
-### Phase 6 — Debrief
+### Phase 6: Debrief
 
 After the real interview, ask what actually got asked, what landed, what did not. If Seba has a
 transcript, read it: it beats memory. Write `interview/debrief.md` and push anything new back into

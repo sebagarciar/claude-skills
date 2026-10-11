@@ -14,7 +14,7 @@ optimized for Applicant Tracking Systems.
 - **`job_search/master-cv.md`.** The bullet bank. The only source of facts. Read it every time.
 - **`context/writing_style.md`.** Short sentences, data over adjectives, no weasel words.
 
-## Truth rules — non-negotiable
+## Truth rules: non-negotiable
 
 1. Never invent a metric, employer, title, date or tool. Selection, ordering and rephrasing only.
 2. A keyword only enters the CV if a bullet in the bank already provides the evidence.
@@ -24,18 +24,25 @@ optimized for Applicant Tracking Systems.
 
 ## Workflow
 
+### 0. Check for an existing application
+
+Before reading the ad, look in `job_search/applications/` for a folder with the same company, then
+the same role. If one exists, stop and tell Seba what is in it (date, role, whether a PDF was
+built). Ask whether he wants a new version. Never write into the existing folder, and never delete
+it. A new version goes in a new folder (`-v2`) only after he says yes.
+
 ### 1. Read the ad and extract requirements
 
 Pull out, in the ad's own words: hard skills, tools, domain terms, seniority signals, and the
 pillars the role is organized around. Note the ad's language.
 
 Write these requirements to `<dir>/keywords.txt`, one per line, in the ad's own wording. This
-file is checked twice: against the draft in step 4, and against the built PDF in step 8 — a
+file is checked twice: against the draft in step 4, and against the built PDF in step 8. A
 promise you can verify beats a promise you remember.
 
 Only a requirement that can be **evidenced** belongs in that file: a tool, a skill, a method, a
-domain, a credential, a scale or a seniority signal. The ad's culture-speak — "ruthlessly",
-"founder mindset", "bar raiser", "operators" — is tone, not a requirement. It belongs in the voice
+domain, a credential, a scale or a seniority signal. The ad's culture-speak, "ruthlessly",
+"founder mindset", "bar raiser", "operators", is tone, not a requirement. It belongs in the voice
 of the Professional Summary, never in a checklist. The test is step 5: if you would never ask Seba
 "do you have this?", it does not go in `keywords.txt`. Letting tone in there inflates the miss
 count with lines nobody can act on and buries the real gaps.
@@ -55,7 +62,7 @@ Pick the strongest bullets per role. Rewrite them to mirror the ad's vocabulary,
 rules. Rewrite the Professional Summary for the target role. Reorder the Technical Skills line so
 the tools the ad names come first.
 
-Name the target role once in the Professional Summary, only where it is honest — title match is
+Name the target role once in the Professional Summary, only where it is honest. Title match is
 one of the heaviest ATS ranking signals and a recruiter's first read. This changes the voice of
 the summary, so read it back before committing to it.
 
@@ -64,7 +71,7 @@ employer name in it and look for the bullet or section header that already carri
 that has a match comes out, and the line goes to something only the summary can say: years of
 experience, the span of disciplines, the target role, the shape of the career. Full rule and the
 reasoning in `context/writing_style.md` Part 2, under CV. This check is cheap to run and easy to
-skip, because a recap reads fine in isolation — it only looks wrong next to the bullets.
+skip, because a recap reads fine in isolation. It only looks wrong next to the bullets.
 
 **Then date-check what is left.** The summary carries the years figure, so every claim beside it
 inherits that span. For each element, name the bullet and the date behind it. Anything whose
@@ -109,7 +116,7 @@ python3 .claude/skills/tailor-cv/scripts/check_keywords.py <dir>/keywords.txt <d
 
 - **Evidence in the bank, missing from the draft.** A selection decision, and it is yours. Either
   reopen the selection or be ready to say why that bullet lost. Never hand this list to Seba as a
-  question — the answer is already in the bank.
+  question: the answer is already in the bank.
 - **No evidence in the bank.** This is the list he sees in step 5. The bank may simply not know
   about it yet.
 
@@ -122,7 +129,7 @@ Then, underneath the draft, show the no-evidence list from step 4 under a headin
 it is and what it is for:
 
 ```
-ATS gaps — the ad asks for these and the bank has no evidence
+ATS gaps: the ad asks for these and the bank has no evidence
   - Salesforce
   - partner enablement
   - B2B SaaS
@@ -133,10 +140,10 @@ Rules for this section:
 
 - Only the no-evidence list goes here. A keyword the bank already covers is your problem to fix,
   not his to answer.
-- Ask flat. No guessing on his behalf, no "you probably touched this at Uber" — that invents the
+- Ask flat. No guessing on his behalf, no "you probably touched this at Uber". That invents the
   evidence and reduces him to confirming it.
 - Do not re-ask a gap he has already answered earlier in the same application.
-- If a gap is not something a person can have *done* or *used*, it is not a question — it means
+- If a gap is not something a person can have *done* or *used*, it is not a question. It means
   step 1 let tone into `keywords.txt`. Fix the file and re-run step 4. Do not paper over it by
   quietly dropping the line from the list you show him.
 - An empty list earns one line: "no ATS gaps, every requirement has evidence." That is a result,
@@ -189,11 +196,11 @@ Apply in this order. Never skip a rung.
 #### Measuring overflow precisely
 
 `overflow_points()` counts the real text lines on page 2 via `pypdf` and prices them at the
-current line-height, so the reported overflow is a genuine measurement, not a guess — it needs
+current line-height, so the reported overflow is a genuine measurement, not a guess. It needs
 `pypdf` installed, and falls back to an unmeasured "~12pt (~1 line)" with a warning if it isn't.
 It is still an approximation (uniform line-height, not exact point position), so for a close call
-— deciding whether one more trim clears the page, or pricing a specific change before committing
-to it — measure the real height in the browser instead. Render the content at auto height and
+(deciding whether one more trim clears the page, or pricing a specific change before committing
+to it), measure the real height in the browser instead. Render the content at auto height and
 read it:
 
 ```python
@@ -227,6 +234,11 @@ the line wrapped and cost 12pt.
 The script asserts one page and extracts the text layer back out of the PDF with `pypdf`, which is
 what an ATS does. It writes that text beside the PDF as `.pdf.txt`.
 
+**Look at the page before calling it done.** Build the preview (see Preview below), open it with
+the browser preview tool and take a screenshot. The text layer proves an ATS can read the CV. It
+does not prove the page looks right. If you cannot open the preview, say so before you start the
+build, not in the closing report.
+
 Run the coverage check a second time, now against the extracted text layer:
 
 ```bash
@@ -238,8 +250,8 @@ rendering and the fit ladder. Rung 3 cuts a bullet, and a cut bullet takes its k
 so a keyword that was present in the draft can be missing from the PDF. Any keyword that moved
 between the two runs is something you caused and must account for.
 
-A miss is not automatically a bug — the bank may genuinely have no evidence for it, and Seba may
-have confirmed as much in step 5 — but it must be a decision, not an oversight.
+A miss is not automatically a bug: the bank may genuinely have no evidence for it, and Seba may
+have confirmed as much in step 5, but it must be a decision, not an oversight.
 
 **Eight-second test.** Recruiters decide on the top third of page one in about eight seconds.
 Read only the name, contact line, summary and first role's title and first two bullets from the
@@ -250,7 +262,7 @@ strongest metric sits first.
 Write `notes.md` in the application folder: bullets selected, bullets dropped, rephrasings made,
 which fit-ladder rungs fired, what the version removed or demoted (subtraction check), verbs put
 back after the verb audit, the present/missing keyword list from `check_keywords.py`, the ATS
-gaps put to Seba in step 5, and what he answered — including the gaps he confirmed he has no
+gaps put to Seba in step 5, and what he answered, including the gaps he confirmed he has no
 evidence for, so a later run does not ask again.
 
 ## Output layout
@@ -268,7 +280,7 @@ job_search/applications/<company>-<role>/
 
 Filename is always `Sebastian Garcia Romero - <Company>.pdf`. Recruiters see the filename. If the
 company name contains `&` or another character some upload forms mangle, use a filesystem-safe
-variant in the filename (e.g. "Click and Boat") — the real name still appears inside the CV and
+variant in the filename (e.g. "Click and Boat"), the real name still appears inside the CV and
 letter content, this only affects the filename on disk.
 
 ## Language
@@ -314,14 +326,14 @@ Entry fields are all optional. Omit `org` for a second role at the same employer
 Uber Courier & Marketplace Coordinator entry. `**bold**` and `*italic*` work inside any text.
 
 `org` is the company name only. An industry or size descriptor, e.g. "(Technology, $50bn)",
-goes in `desc` (the 9pt line), never appended in parentheses to `org` — a simpler ATS parser can
+goes in `desc` (the 9pt line), never appended in parentheses to `org`, a simpler ATS parser can
 store the whole ambiguous string as the employer name.
 
 Contact-line link text never carries a trailing slash: `sebasgarcia.dev`, not `sebasgarcia.dev/`.
 
 **When the contact line links to the personal site, tag the href for traffic tracking.** Change
 only the `href` target from `https://sebasgarcia.dev/` to `https://sebasgarcia.dev/?src=<slug>`.
-The visible text stays exactly `sebasgarcia.dev` — nothing looks different on the printed page.
+The visible text stays exactly `sebasgarcia.dev`, nothing looks different on the printed page.
 
 `<slug>` = the target company's name: lowercase, ASCII only (strip accents/diacritics, e.g. Müller
 → muller), spaces and punctuation replaced with single hyphens (collapse repeats, no leading or
@@ -331,7 +343,11 @@ trailing hyphen), truncated to 40 characters. Examples: Notion → `notion`, "Ac
 <a href="https://sebasgarcia.dev/?src=notion">sebasgarcia.dev</a>
 ```
 
-Do not tag GitHub. When the contact line links to GitHub instead (technical roles — see the
+Never open a tagged link in the session's browser. The opt-out `?me=1` is stored per browser, and
+that browser has none, so each load is recorded as a real click and pollutes the traffic stats.
+Check the `href` text in `cv-content.json` instead.
+
+Do not tag GitHub. When the contact line links to GitHub instead (technical roles, see the
 single-link rule in `job_search/CLAUDE.md`), leave that href as-is: GitHub visits aren't tracked and the parameter
 would just look odd in the URL.
 

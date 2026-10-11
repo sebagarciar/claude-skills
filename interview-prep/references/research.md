@@ -3,7 +3,7 @@
 Two tracks, run together. Track A is what the company is. Track B is how it interviews.
 Both go into `interview/research.md`, dated, with every claim marked `[sourced]` or `[inferred]`.
 
-## Track A — The company
+## Track A: The company
 
 Do not write a Wikipedia summary. Research towards the questions an interviewer will actually
 ask, which means research towards the pressure the business is under right now.
@@ -104,7 +104,7 @@ critique.
   why each matters to the business, then how to use it in the room (one finding, framed as
   "I noticed", after the positives, and "this is what I'd pick up in week one").
 
-## Track B — The interview process
+## Track B: The interview process
 
 ### What to look for
 
@@ -125,10 +125,10 @@ in role-specific subreddits, Medium write-ups, and recruiter posts on LinkedIn.
 
 Crowd-reported process data is noisy, often years old, and varies by country and team. Grade it:
 
-- **Confirmed** — the company documents it, or the recruiter told Seba directly.
-- **Consistent reports** — several independent accounts agree.
-- **Single report** — one account, flagged as such.
-- **Inferred** — no data. Say what the pattern is at comparable companies and why, and mark it
+- **Confirmed**: the company documents it, or the recruiter told Seba directly.
+- **Consistent reports**: several independent accounts agree.
+- **Single report**: one account, flagged as such.
+- **Inferred**: no data. Say what the pattern is at comparable companies and why, and mark it
   clearly. An honest `[inferred]` is useful. A dressed-up guess is a liability.
 
 Company facts need two extra labels beyond `[sourced]` and `[inferred]`:
@@ -160,7 +160,7 @@ If Seba has emails or messages from the recruiter, ask for them. A recruiter say
 8. **Culture and evaluation criteria.**
 9. **The product**, if inspected: one paragraph and a pointer to the audit file.
 10. **The process**, stage by stage, with a reliability grade on each.
-11. **Open questions** — what could not be found, and which of these the recruiter can answer.
-12. **Sources** — links, with what each one supported.
+11. **Open questions**: what could not be found, and which of these the recruiter can answer.
+12. **Sources**: links, with what each one supported.
 
 Every factual line carries `[sourced]` or `[inferred]`. No exceptions.

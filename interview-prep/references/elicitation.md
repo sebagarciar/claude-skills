@@ -11,10 +11,10 @@ question is being asked.
 
 ```
 Competency                     Evidence
-Pricing strategy               Strong — S1, S2, S3
-Managing a direct team         Thin — U8 only, 2 people, no detail on how
+Pricing strategy               Strong: S1, S2, S3
+Managing a direct team         Thin: U8 only, 2 people, no detail on how
 Handling a failed launch       None
-Influencing without authority  Strong — U5, U3
+Influencing without authority  Strong: U5, U3
 ```
 
 ## How to ask

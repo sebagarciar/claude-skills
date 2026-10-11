@@ -43,7 +43,7 @@ Do not rewrite his answer for him unless he asks. He should fix it and try again
 Write `interview/drills/<YYYY-MM-DD>-<stage>.md` during the session:
 
 ```markdown
-# Drill — <Stage> · <Company> · <YYYY-MM-DD>
+# Drill: <Stage> · <Company> · <YYYY-MM-DD>
 
 ## Q1. <question as asked>
 **Seba's answer (verbatim):**

@@ -10,7 +10,7 @@ Two files, deliberately. `master-cv.md` stays a clean, tagged, one-line bullet b
 ## Entry format
 
 ```markdown
-### <Short handle> — <Company>, <Year>
+### <Short handle>: <Company>, <Year>
 `tags` `here`
 
 - **Situation.** One or two lines. Scope and what was at stake.

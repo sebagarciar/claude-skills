@@ -1,6 +1,6 @@
 ---
 name: wrap-up
-description: Review the current session for lessons worth keeping and propose them to Seba one by one, writing only the ones he approves into MEMORY.md, context/writing_style.md or a folder's CLAUDE.md. Use only when Seba types /wrap-up or explicitly asks to wrap up, close out, or capture what was learned in this session. Never run it on your own at the end of a task.
+description: Review the current session for lessons worth keeping and propose them to Seba one by one, writing only the ones he approves into MEMORY.md, context/writing_style.md or a folder's CLAUDE.md. With "prune", review the existing rules instead and give each a keep, update, merge or delete verdict for his approval. Use only when Seba types /wrap-up (or /wrap-up prune) or explicitly asks to wrap up, close out, capture what was learned in this session, or prune or refresh the rules. Never run it on your own at the end of a task.
 ---
 
 # Wrap Up
@@ -11,6 +11,9 @@ The rule files stay useful only if they stay short and sharp. A rule nobody need
 that buries the rules that matter.
 
 **Nothing is written without Seba's yes on that specific item.**
+
+**Prune mode.** If Seba typed `/wrap-up prune` or asked to prune or refresh the rules, skip
+the steps below and follow `references/prune.md` instead.
 
 ## Step 1: Load what already exists
 

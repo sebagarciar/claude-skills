@@ -18,9 +18,9 @@ rubric, use its own vocabulary, because the interviewer is scoring against that 
 - **Context** in one line. Company, scope, what was at stake. Not three lines of setup.
 - **The tension.** Why this was hard, or what the disagreement was. Skipping this is the most
   common way a strong story lands flat.
-- **What he did**, in first person singular. Decisions, not activities.
+- **What they did**, in first person singular. Decisions, not activities.
 - **The result**, with the number from the bank, quoted exactly.
-- **What he took from it.** One line. This is what senior interviewers actually listen for.
+- **What they took from it.** One line. This is what senior interviewers actually listen for.
 
 Map each story to the competencies it can serve, and warn when the same story is being reused
 across several answers in one loop. Three answers from the same project reads as a thin career.
@@ -33,7 +33,7 @@ receiving hard feedback, changing your mind.
 
 ## 2. Functional and case
 
-The questions that test whether he can do this specific job at this specific company.
+The questions that test whether they can do this specific job at this specific company.
 
 **How to build them.** From Track A of the research: take a real problem the business has and
 turn it into a question the interviewer would plausibly ask. Two or three per role, not ten.
@@ -57,17 +57,16 @@ Worked shape, using the marketplace example:
 > **The tradeoff that makes it interesting.** Incentives buy hours you would often have got
 > anyway. Say how you would isolate the incremental effect before scaling the spend.
 >
-> **Where Seba connects.** He ran $400k monthly of courier incentive tooling, rebuilt the
-> UberPro loyalty thresholds and won the argument to admit taxi drivers for 10% MoM active
-> driver growth, and renegotiated the EV fleet agreement to 4x vehicles. He has done this.
+> **Where the user connects.** They ran a large incentive budget, rebuilt the
+> loyalty thresholds and won an argument that moved a growth metric. They have done this.
 > The answer should end there, not start there.
 
 **Rules for building these.** Get to a recommendation, not a framework. Name metrics the
 company actually uses. Include the tradeoff, since that is what separates an operator from
-someone who read a case book. Always close the loop back to Seba's own evidence, but only after
+someone who read a case book. Always close the loop back to the user's own evidence, but only after
 the thinking has been shown.
 
-**If the role is not one he has done before,** build the case from the company's problem
+**If the role is not one they have done before,** build the case from the company's problem
 anyway, and prepare an honest bridge: the transferable mechanism, not a pretence of experience.
 
 ---
@@ -84,22 +83,22 @@ for is a step up or a step down.
 
 **How to build the answer.** Acknowledge the fact in one sentence with no defensiveness. Give
 the closest real evidence. Say what would be done about the gap. Stop. Do not over-explain: the
-length of the answer is what signals whether he thinks it is a problem.
+length of the answer is what signals whether they think it is a problem.
 
 **On the uncomfortable ones.** Where the honest answer is genuinely a risk to the offer, prepare
-the honest version anyway, framed on what he would build in the role. A fudged answer here is
+the honest version anyway, framed on what they would build in the role. A fudged answer here is
 usually detected and costs more than the truth.
 
 ---
 
-## 4. His questions for them
+## 4. Their questions for them
 
 Three to five per stage, pitched at the person in the room. At least one must be traceable to
-the research, phrased so it is obvious he read the results, the launch or the strategy shift.
+the research, phrased so it is obvious they read the results, the launch or the strategy shift.
 
 Good ones tend to be: what does success look like at six months, what is the hardest part of
 this role that is not in the ad, what has the team tried here that did not work, how does this
 team decide priorities when the list is too long, what would make you regret this hire.
 
-Keep two in reserve for the case where his prepared questions get answered during the
+Keep two in reserve for the case where their prepared questions get answered during the
 conversation.

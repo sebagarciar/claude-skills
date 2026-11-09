@@ -4,7 +4,7 @@ description: >
   Weekly maintenance pass over this Obsidian vault (obsidian-main). Finds notes that are new or
   changed since the last run, fixes their category/frontmatter/naming to match the vault's
   conventions, and adds backlinks for people/companies/cases that are genuinely recurring —
-  not passing one-line examples. Use this when Seba says "run the weekly review", "organize my
+  not passing one-line examples. Use this when the user says "run the weekly review", "organize my
   notes", "clean up the vault", or on a recurring weekly cadence. Ends with a git commit so every
   run is reversible and diffable.
 ---
@@ -47,7 +47,7 @@ For each note in scope:
   `Classes`, the way 9 Revolut notes were before this vault's cleanup), recategorize it to match
   the closest existing category and template — reuse an already-established pattern in the vault
   (e.g. `Fever.md` is the reference shape for `Jobs`) rather than inventing a new one.
-- If a note is reference material about something outside Seba's own writing (a book, etc.),
+- If a note is reference material about something outside the user's own writing (a book, etc.),
   it belongs in `Extras/References/`, not root.
 - If a file clearly isn't vault content at all (a dropped project artifact, code output, unrelated
   scratch file — like `DESIGN.md.md` was), flag it and ask rather than deleting it outright.

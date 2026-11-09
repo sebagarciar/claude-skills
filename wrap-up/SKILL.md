@@ -1,6 +1,6 @@
 ---
 name: wrap-up
-description: Review the current session for lessons worth keeping and propose them to Seba one by one, writing only the ones he approves into MEMORY.md, context/writing_style.md or a folder's CLAUDE.md. With "prune", review the existing rules instead and give each a keep, update, merge or delete verdict for his approval. Use only when Seba types /wrap-up (or /wrap-up prune) or explicitly asks to wrap up, close out, capture what was learned in this session, or prune or refresh the rules. Never run it on your own at the end of a task.
+description: Review the current session for lessons worth keeping and propose them to the user one by one, writing only the ones they approve into MEMORY.md, context/writing_style.md or a folder's CLAUDE.md. With "prune", review the existing rules instead and give each a keep, update, merge or delete verdict for their approval. Use only when the user types /wrap-up (or /wrap-up prune) or explicitly asks to wrap up, close out, capture what was learned in this session, or prune or refresh the rules. Never run it on your own at the end of a task.
 ---
 
 # Wrap Up
@@ -10,9 +10,9 @@ Claude works next time? Usually the honest answer is "nothing", and that is a go
 The rule files stay useful only if they stay short and sharp. A rule nobody needed is noise
 that buries the rules that matter.
 
-**Nothing is written without Seba's yes on that specific item.**
+**Nothing is written without the user's yes on that specific item.**
 
-**Prune mode.** If Seba typed `/wrap-up prune` or asked to prune or refresh the rules, skip
+**Prune mode.** If the user typed `/wrap-up prune` or asked to prune or refresh the rules, skip
 the steps below and follow `references/prune.md` instead.
 
 ## Step 1: Load what already exists
@@ -27,8 +27,8 @@ Read before proposing anything, so nothing gets proposed twice:
 
 Go through the session and list what could be a lesson. Good sources, in order of value:
 
-1. **Corrections.** Seba said something was wrong, redid it, or pushed back.
-2. **Decisions.** Seba chose between options, and the choice isn't visible in the code or files.
+1. **Corrections.** the user said something was wrong, redid it, or pushed back.
+2. **Decisions.** the user chose between options, and the choice isn't visible in the code or files.
 3. **Surprises.** Something about a tool, file or project behaved differently than expected
    and cost time.
 
@@ -67,12 +67,12 @@ Show the list in chat. Nothing is written yet. For each item:
    Why: <the moment in this session that triggered it, one line>
 ```
 
-For **sharpen** and **merge**, quote the current rule text so Seba sees before and after.
+For **sharpen** and **merge**, quote the current rule text so the user sees before and after.
 
 If nothing passed, say so in one line: "Nothing from this session worth adding." Do not pad
 it with a summary of the session.
 
-Then ask Seba to answer yes or no per item (he can also edit the wording).
+Then ask the user to answer yes or no per item (they can also edit the wording).
 
 ## Step 6: Write only the yeses
 
@@ -81,7 +81,7 @@ Then ask Seba to answer yes or no per item (he can also edit the wording).
   where relevant. Match what's already there.
 - For a sharpen or merge, edit the existing rule in place. Don't append a second version.
 - No dates, session logs, "learned today" notes or changelog lines, and no em dashes.
-- Don't touch anything Seba didn't approve, including typos or formatting you notice
+- Don't touch anything the user didn't approve, including typos or formatting you notice
   along the way. Mention them instead.
 
 Finish by listing what was written and where, one line per item.

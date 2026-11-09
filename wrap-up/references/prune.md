@@ -1,20 +1,20 @@
 # Prune: refresh the existing rules
 
-Run this only when Seba types `/wrap-up prune` or asks to prune, refresh or clean up the
+Run this only when the user types `/wrap-up prune` or asks to prune, refresh or clean up the
 rules. It does not look for new lessons. It checks the rules already written down.
 
 Why it matters: rule files help only while they stay short and written by a human. Every rule
 that Claude would follow anyway, or that went stale, costs attention on every task and buries
 the rules that matter.
 
-**Nothing is changed without Seba's yes on that specific item.**
+**Nothing is changed without the user's yes on that specific item.**
 
 ## Step 1: Pick the scope
 
-One run covers `MEMORY.md` plus one more rule file. Ask Seba which one (built-in question
+One run covers `MEMORY.md` plus one more rule file. Ask the user which one (built-in question
 tool), recommending the largest folder `CLAUDE.md`. Options: a folder `CLAUDE.md`, the root
 `CLAUDE.md`, or a file in `context/` (not `writing_style.md`, which has its own
-structure; prune it only if Seba asks for it by name).
+structure; prune it only if the user asks for it by name).
 
 Read the routing section in `MEMORY.md` ("Where each new lesson goes") too, so any move follows it.
 
@@ -39,7 +39,7 @@ A rule that passes all five is **keep**.
 ## Step 3: Propose
 
 Show the keeps first, as one short list (rule name only). Ask once: "Keep all of these?"
-Seba can pull any of them out for a closer look.
+the user can pull any of them out for a closer look.
 
 Then the changes, **one at a time** with the built-in question tool, recommendation first:
 
@@ -50,7 +50,7 @@ After: <new text, or "removed", or "merged into <file> § <section>">
 Why: <the test it failed, one line>
 ```
 
-Options: apply it (recommended), keep as is, or Seba's own wording. "Keep as is" is a fine
+Options: apply it (recommended), keep as is, or the user's own wording. "Keep as is" is a fine
 answer and needs no defense.
 
 At most 8 changes per run. If more fail, propose the 8 with the biggest effect and list the
@@ -62,6 +62,6 @@ rest in one line for the next run.
   the other copy. For a move, add it at the destination and remove it from the source.
 - If a removed rule was referenced elsewhere (a skill, another `CLAUDE.md`), fix the reference.
 - No dates, session logs, "pruned on" notes or changelog lines, and no em dashes.
-- Don't touch anything Seba didn't approve. Mention typos or loose ends instead.
+- Don't touch anything the user didn't approve. Mention typos or loose ends instead.
 
 Finish by listing what changed, one line per item.

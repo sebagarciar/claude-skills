@@ -9,8 +9,8 @@ With --bank, a missing keyword is sorted into one of two buckets, because the
 two need opposite responses:
 
   * evidence in the bank  -> a selection decision. Reopen the selection or
-                             justify the drop. Never a question for Seba.
-  * no evidence anywhere  -> a question for Seba. He may have done it and the
+                             justify the drop. Never a question for the user.
+  * no evidence anywhere  -> a question for the user. They may have done it and the
                              bank may simply not know yet.
 
 Usage:
@@ -92,12 +92,12 @@ def main():
     no_evidence = [k for k in missing if not found(k, bank)]
 
     print(f"\nmissing, evidence in the bank ({len(in_bank)}) "
-          f"-- selection decision, not a question for Seba:")
+          f"-- selection decision, not a question for the user:")
     for k in in_bank:
         print(f"  ~ {k}")
 
     print(f"\nmissing, no evidence in the bank ({len(no_evidence)}) "
-          f"-- ask Seba before building:")
+          f"-- ask the user before building:")
     for k in no_evidence:
         print(f"  ? {k}")
 

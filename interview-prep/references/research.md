@@ -12,17 +12,17 @@ ask, which means research towards the pressure the business is under right now.
 
 The unit of value, who pays, and what the margin structure looks like. For a marketplace, both
 sides and the take rate. For SaaS, the pricing model and who signs. For retail, the format mix.
-Seba came from Uber and Simon Kucher: he can speak to pricing, take rates, incentives and unit
+If the user's background covers pricing, they can speak to pricing, take rates, incentives and unit
 economics credibly, so this section pays for itself.
 
 **Find the one number that makes the business click, and work it out.** A description of the
 product is forgettable; a worked calculation is not. For example, a payments company that
 sells early-payment discounts: 2% sounds small until you annualise it, and 2% for paying 20 days
 early is about 37% a year, against 2 to 4% for cash in a bank. One line like that explains the
-whole business better than any paragraph. Show the formula so Seba can redo it out loud, and mark it
+whole business better than any paragraph. Show the formula so the user can redo it out loud, and mark it
 `[inferred]` when the inputs are assumptions.
 
-**Answer the practical mechanics before Seba has to ask.** On a two-sided product, his first
+**Answer the practical mechanics before the user has to ask.** On a two-sided product, their first
 follow-ups were "do both companies need to hire the service?" and "how hard is it to onboard a
 company?". Both should have been in the first draft. For every company, answer:
 
@@ -32,7 +32,7 @@ company?". Both should have been in the first draft. For every company, answer:
   side gets involved (IT, security, procurement). Job ads for integration engineers are evidence.
 - **What a new customer gets on day one**, before any network effect or data exists.
 
-If a mechanic cannot be found, say so and turn it into a question Seba asks in the room.
+If a mechanic cannot be found, say so and turn it into a question the user asks in the room.
 
 ### 2. Where it is in its life
 
@@ -43,7 +43,7 @@ whole process and should be flagged, not hidden.
 ### 3. What changed in the last twelve months
 
 Results, launches, market exits, acquisitions, leadership changes, regulation, a public
-strategy shift. This is the richest source of interview questions and of the questions Seba
+strategy shift. This is the richest source of interview questions and of the questions the user
 asks back. Prioritise the last two quarters.
 
 ### 4. Competitors and the actual fight
@@ -51,7 +51,7 @@ asks back. Prioritise the last two quarters.
 Who they lose deals to and why. What their differentiator claims to be, and whether the
 evidence supports it. Be willing to write the uncomfortable version.
 
-### 5. The team he would join
+### 5. The team they would join
 
 The function, where it sits, who it reports to, what it owns. Look up the hiring manager and
 likely interviewers on LinkedIn if named. Their background predicts their questions: an
@@ -69,7 +69,7 @@ What problem is this hire solving? A new role means the function is being built.
 means something broke or someone left. Read the ad for the pillars it is organised around and
 map each one to a likely interview probe.
 
-**Pull the company's own job board, not only the ad Seba pasted.** The version on the careers
+**Pull the company's own job board, not only the ad the user pasted.** The version on the careers
 page is often longer, and the extra lines (a trial day, the real scope, "all of this has
 actually happened in this seat") are often the most useful ones. Most boards
 have a public feed: Ashby (`https://api.ashbyhq.com/posting-api/job-board/<slug>`), Greenhouse
@@ -79,7 +79,7 @@ have a public feed: Ashby (`https://api.ashbyhq.com/posting-api/job-board/<slug>
 **Read the other open roles as strategy signals.** They say what the company is building next,
 often more candidly than the press. An ERP integration engineer ad tells you who the target
 customers are; a first marketing hire's ad may admit the category has no demand yet. Signals like
-these make the best questions Seba can ask.
+these make the best questions the user can ask.
 
 If the interviewer currently holds the same role, ask whether this hire is a second seat or a
 backfill. It changes what the job is.
@@ -92,12 +92,12 @@ to show us" is best answered with something about *their* product. Reading a com
 repos and finding a real bug plus a design gap tied to their core thesis can be the strongest
 single piece of prep for a call. It can also come to nothing: in one call the interviewer called
 the audited product something the team tried on a weekend. Use an audit to understand the
-business. Before Seba raises a finding, check how central the product is to the company
+business. Before the user raises a finding, check how central the product is to the company
 (homepage, job ads, founder posts), and if that is unclear, prepare it as a question, not a
 critique.
 
-- Read, do not run. Clone into the scratchpad, never install into Seba's setup unprompted.
-- **Check side effects before suggesting Seba try it.** Some products send real emails, create
+- Read, do not run. Clone into the scratchpad, never install into the user's setup unprompted.
+- **Check side effects before suggesting the user try it.** Some products send real emails, create
   legal documents or charge money the moment you use them. If trying the product sends messages,
   charges money, needs a tax ID or creates a legal document, say so and do not suggest it.
 - Write the findings to `interview/<product>-audit.md`: what is good first, then findings with
@@ -125,7 +125,7 @@ in role-specific subreddits, Medium write-ups, and recruiter posts on LinkedIn.
 
 Crowd-reported process data is noisy, often years old, and varies by country and team. Grade it:
 
-- **Confirmed**: the company documents it, or the recruiter told Seba directly.
+- **Confirmed**: the company documents it, or the recruiter told the user directly.
 - **Consistent reports**: several independent accounts agree.
 - **Single report**: one account, flagged as such.
 - **Inferred**: no data. Say what the pattern is at comparable companies and why, and mark it
@@ -134,15 +134,15 @@ Crowd-reported process data is noisy, often years old, and varies by country and
 Company facts need two extra labels beyond `[sourced]` and `[inferred]`:
 
 - **Stated by the company, unannounced.** A fact that appears only in the job ad or a recruiter
-  message, such as a funding round with no public trace anywhere. Seba can mention it to that
+  message, such as a funding round with no public trace anywhere. The user can mention it to that
   company, never to anyone else.
 - **Database estimate.** Dealroom, PitchBook and similar often show a valuation without saying
   whether it is pre-money, post-money or their own estimate. Say exactly what the label says, and
-  tell Seba not to quote it.
+  tell the user not to quote it.
 
 Flag both in the brief under a "don't repeat outside the room" note.
 
-If Seba has emails or messages from the recruiter, ask for them. A recruiter saying "next is a
+If the user has emails or messages from the recruiter, ask for them. A recruiter saying "next is a
 45 minute call with the hiring manager and then a case" beats every blog post ever written.
 
 ## Write-up
@@ -151,7 +151,7 @@ If Seba has emails or messages from the recruiter, ask for them. A recruiter say
 
 1. **Date and role.** Research run on YYYY-MM-DD for `<role>` at `<company>`.
 2. **The 60-second version.** What this company is and what it is fighting right now, in five
-   lines. If Seba reads nothing else, he reads this.
+   lines. If the user reads nothing else, they read this.
 3. **Business model and unit economics**, including the worked number.
 4. **How it works in practice**: who adopts, who pays, onboarding effort, day-one value.
 5. **Current situation and last twelve months.**

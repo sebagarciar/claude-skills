@@ -30,7 +30,7 @@ the process.
 
 ## Hiring manager (45 to 60 minutes)
 
-**Who:** the person who would manage him.
+**Who:** the person who would manage them.
 
 **Their fear:** hiring someone they have to supervise closely, or who cannot handle the messy
 parts of the job.
@@ -43,13 +43,13 @@ wrong get probed.
 with a stakeholder, how you prioritise with too much on the list, a time you were wrong, how
 you work with people who do not report to you, why you left or are leaving.
 
-**For Seba specifically:** `master-cv.md` has strong owned-outcome material (the $2M monthly
-budget, the UberPro case that changed leadership's mind, the EV fleet renegotiation). A hiring
+**For the user specifically:** `master-cv.md` has strong owned-outcome material (for example a large owned
+budget, a case that changed leadership's mind, a hard renegotiation). A hiring
 manager will pick one and push on it hard: what exactly did you do, what did you decide, what
 would you do differently. Prepare depth on the two or three most role-relevant bullets, because
 a strong bullet with a thin story underneath is worse than not listing it.
 
-**His leadership answers should come from `context/about-me.md`,** which already states his
+**Their leadership answers should come from `context/about-me.md`,** which already states their
 actual style: raise problems fast, come with a proposed solution, define the what and the when
 and leave the how to the team. That is a real position and it interviews well. Use it.
 
@@ -71,7 +71,7 @@ call on incomplete information.
 **How to prepare it here:** predict two or three cases specific to this company's real problems,
 built from Track A of the research. Not generic frameworks. For each one give the structure, the
 levers, the metrics that company would use, the tradeoff that makes it interesting, and where
-Seba's own experience connects. See `question-banks.md`.
+the user's own experience connects. See `question-banks.md`.
 
 **The trap:** presenting a framework instead of an answer. Structure first, then commit to a
 recommendation and say what would change your mind.
@@ -80,18 +80,18 @@ recommendation and say what would change your mind.
 
 ## Trial day, take-home or case day (half day to full day)
 
-**Who:** the team he would work with, often the founders at a startup.
+**Who:** the team they would work with, often the founders at a startup.
 
 **Their fear:** someone who interviews well and then cannot produce under real conditions.
 
 **What they are really testing:** output under time pressure, writing that needs no editing,
-whether he asks good questions early, and what he is like to work next to for a day (lunch is
+whether they ask good questions early, and what they are like to work next to for a day (lunch is
 part of it).
 
 **Spotting it:** the ad may say it directly. Sometimes it hides in the role's own scope (for
 example, a generalist role that is asked to "prepare and run structured trial days" for other
 hires): a company that runs trial days for every business hire will almost certainly run one
-for this one. Mark it `[inferred]` and have Seba
+for this one. Mark it `[inferred]` and have the user
 ask in the first call.
 
 **How to prepare it: build a mock day.** Put it in the HTML guide and in
@@ -102,13 +102,13 @@ ask in the first call.
   company (from Track A of the research), never a generic case. Typical set for a generalist
   role: a one-page strategy memo, an operations task done by hand, the same task automated with
   an AI coding agent, and a piece of writing (investor update, brief).
-- **Practice data, clearly labelled as made up.** Save data files (CSV) so Seba can point Claude
+- **Practice data, clearly labelled as made up.** Save data files (CSV) so the user can point Claude
   Code at them. Plant specific, findable issues.
-- **Real-world facts he must verify himself**, with a source. Part of the test is not trusting
+- **Real-world facts they must verify themselves**, with a source. Part of the test is not trusting
   memory.
 - **A strong-versus-weak scoring guide** per task.
-- **An answer key, hidden** until he opens it.
-- A note to save his outputs in `interview/drills/` and send them back for scoring against the
+- **An answer key, hidden** until they open it.
+- A note to save their outputs in `interview/drills/` and send them back for scoring against the
   guide.
 
 ---
@@ -127,7 +127,7 @@ what their function is measured on, and whether you can be persuaded.
 that will not prioritise your work, how you communicate bad news, what you would need from us
 in the first month.
 
-**For Seba specifically:** the cross-functional regulatory initiative with Legal, Policy,
+**For the user specifically:** the cross-functional regulatory initiative with Legal, Policy,
 Compliance and Engineering is the strongest single piece of evidence in the bank for this stage.
 It should be ready.
 
@@ -146,8 +146,8 @@ of view about their business. Frequently a single hard question and then a conve
 three years, what would you do in your first ninety days, why this and not the obvious
 alternative, where do you want to be in five years.
 
-**For Seba specifically:** this is where the research pays off, and where his long-term plan
-can come up. Handle it honestly and framed around what he would build here, not around the exit.
+**For the user specifically:** this is where the research pays off, and where their long-term plan
+can come up. Handle it honestly and framed around what they would build here, not around the exit.
 
 **The trap:** hedging. Executives read hedging as having no view.
 
@@ -155,11 +155,11 @@ can come up. Handle it honestly and framed around what he would build here, not 
 
 ## Every stage, without exception
 
-**Questions he asks them.** Prepare three to five per stage, pitched at that person. Recruiter
+**Questions they ask them.** Prepare three to five per stage, pitched at that person. Recruiter
 questions are about process and team. Hiring manager questions are about the work, success in
 the role, and what has been hardest. Executive questions are about strategy and bets. At least
 one question per stage must be traceable to the research, because that is the question that
-proves he did the work.
+proves they did the work.
 
 Never ask a question the careers page answers. Never ask about holiday or remote policy before
 an offer, unless the recruiter opened that door.

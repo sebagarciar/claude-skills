@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Render a tailored CV from JSON to a one-page, ATS-readable PDF.
 
-Replicates the format of Seba's original Google Docs CV:
+Replicates the format of the user's original Google Docs CV:
 US Letter 612x792pt, Arial family, 14pt name / 10pt body / 9pt secondary,
 28pt side margins, full-width rules under section headings.
 

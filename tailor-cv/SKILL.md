@@ -1,11 +1,11 @@
 ---
 name: tailor-cv
-description: Tailor Seba's CV to a specific job ad and produce a one-page, ATS-optimized PDF ready to attach to an application. Use whenever Seba pastes a job description, shares a job posting URL, or asks for a CV, resume, or CV version for a role or company.
+description: Tailor the user's CV to a specific job ad and produce a one-page, ATS-optimized PDF ready to attach to an application. Use whenever the user pastes a job description, shares a job posting URL, or asks for a CV, resume, or CV version for a role or company.
 ---
 
 # Tailor CV
 
-Turn a job ad into a one-page PDF that matches the format of Seba's original CV and is
+Turn a job ad into a one-page PDF that matches the format of the user's original CV and is
 optimized for Applicant Tracking Systems.
 
 ## Inputs
@@ -27,9 +27,9 @@ optimized for Applicant Tracking Systems.
 ### 0. Check for an existing application
 
 Before reading the ad, look in `job_search/applications/` for a folder with the same company, then
-the same role. If one exists, stop and tell Seba what is in it (date, role, whether a PDF was
-built). Ask whether he wants a new version. Never write into the existing folder, and never delete
-it. A new version goes in a new folder (`-v2`) only after he says yes.
+the same role. If one exists, stop and tell the user what is in it (date, role, whether a PDF was
+built). Ask whether they want a new version. Never write into the existing folder, and never delete
+it. A new version goes in a new folder (`-v2`) only after they say yes.
 
 ### 1. Read the ad and extract requirements
 
@@ -43,7 +43,7 @@ promise you can verify beats a promise you remember.
 Only a requirement that can be **evidenced** belongs in that file: a tool, a skill, a method, a
 domain, a credential, a scale or a seniority signal. The ad's culture-speak, "ruthlessly",
 "founder mindset", "bar raiser", "operators", is tone, not a requirement. It belongs in the voice
-of the Professional Summary, never in a checklist. The test is step 5: if you would never ask Seba
+of the Professional Summary, never in a checklist. The test is step 5: if you would never ask the user
 "do you have this?", it does not go in `keywords.txt`. Letting tone in there inflates the miss
 count with lines nobody can act on and buries the real gaps.
 
@@ -52,7 +52,7 @@ count with lines nobody can act on and buries the real gaps.
 Score every bullet in `master-cv.md` against those requirements. Rank within each role.
 
 If a **must-have** from the ad has no evidence anywhere in the bank, stop and say so in two lines
-before building anything. That is a go/no-go on the application and it is Seba's call, not a
+before building anything. That is a go/no-go on the application and it is the user's call, not a
 tailoring problem. See `job_search/CLAUDE.md`. It is a different check from the ATS gaps in step 5;
 the distinction is spelled out at the end of step 5 below.
 
@@ -76,11 +76,11 @@ skip, because a recap reads fine in isolation. It only looks wrong next to the b
 **Then date-check what is left.** The summary carries the years figure, so every claim beside it
 inherits that span. For each element, name the bullet and the date behind it. Anything whose
 evidence sits only in a short role or only in a personal project comes out of the summary and goes
-on the Technical Skills line instead, which reads as "tools he can use" rather than six years of
+on the Technical Skills line instead, which reads as "tools they can use" rather than six years of
 doing it. A tool list is the usual offender. Same file, next rule.
 
 Typical capacity at zero compression is 13 bullets plus a 3-line summary. Aim to fill the page.
-An under-filled page wastes the strongest asset Seba has, which is evidence.
+An under-filled page wastes the strongest asset the user has, which is evidence.
 
 No role gets more than 5 bullets; each role entry counts on its own. Past 5 a recruiter skims, and
 the extra bullets dilute the best ones. If a role wants a sixth, the selection isn't finished: cut
@@ -102,8 +102,8 @@ reopen the selection.
 
 ### 4. Check ATS coverage on the draft
 
-Run the coverage check before showing Seba anything, against the draft rather than the PDF. That
-is the whole point: a gap has to surface while the CV is still editable and while he can still
+Run the coverage check before showing the user anything, against the draft rather than the PDF. That
+is the whole point: a gap has to surface while the CV is still editable and while they can still
 answer it.
 
 Write the draft to `<dir>/cv-content.json` first (schema below), then:
@@ -115,14 +115,14 @@ python3 .claude/skills/tailor-cv/scripts/check_keywords.py <dir>/keywords.txt <d
 `--bank` splits the misses in two, because the two need opposite responses:
 
 - **Evidence in the bank, missing from the draft.** A selection decision, and it is yours. Either
-  reopen the selection or be ready to say why that bullet lost. Never hand this list to Seba as a
+  reopen the selection or be ready to say why that bullet lost. Never hand this list to the user as a
   question: the answer is already in the bank.
-- **No evidence in the bank.** This is the list he sees in step 5. The bank may simply not know
+- **No evidence in the bank.** This is the list they see in step 5. The bank may simply not know
   about it yet.
 
 ### 5. Show the draft and the ATS gaps before rendering
 
-Per the root `CLAUDE.md` ("Plan first"), show Seba the selected and rephrased bullets before producing the PDF. Say which
+Per the root `CLAUDE.md` ("Plan first"), show the user the selected and rephrased bullets before producing the PDF. Say which
 bullets were dropped and why.
 
 Then, underneath the draft, show the no-evidence list from step 4 under a heading that says what
@@ -139,23 +139,23 @@ Do you have any of these? Tell me what you actually did and I will add it.
 Rules for this section:
 
 - Only the no-evidence list goes here. A keyword the bank already covers is your problem to fix,
-  not his to answer.
-- Ask flat. No guessing on his behalf, no "you probably touched this at Uber". That invents the
-  evidence and reduces him to confirming it.
-- Do not re-ask a gap he has already answered earlier in the same application.
+  not their to answer.
+- Ask flat. No guessing on their behalf, no "you probably touched this at your last job". That invents the
+  evidence and reduces them to confirming it.
+- Do not re-ask a gap they have already answered earlier in the same application.
 - If a gap is not something a person can have *done* or *used*, it is not a question. It means
   step 1 let tone into `keywords.txt`. Fix the file and re-run step 4. Do not paper over it by
-  quietly dropping the line from the list you show him.
+  quietly dropping the line from the list you show them.
 - An empty list earns one line: "no ATS gaps, every requirement has evidence." That is a result,
   not silence.
 
-**What he answers goes into `master-cv.md` first, never straight into the CV.** Truth rule 2 says
+**What they answer goes into `master-cv.md` first, never straight into the CV.** Truth rule 2 says
 a keyword only enters the CV if a bullet in the bank provides the evidence, and an answer in chat
 is not a bullet in the bank. Write the new bullet into the bank in the bank's own format, show it
-to him, then re-score and pull it into the CV. Two payoffs: the truth rule holds, and the next ad
+to them, then re-score and pull it into the CV. Two payoffs: the truth rule holds, and the next ad
 asking for the same thing already finds it.
 
-If he says there is no evidence for a gap, that is closed. Record it in `notes.md` and do not
+If they say there is no evidence for a gap, that is closed. Record it in `notes.md` and do not
 raise it again for this application.
 
 #### ATS gaps are not the must-have pre-flight
@@ -163,7 +163,7 @@ raise it again for this application.
 Two different checks, at two different moments, with two different stakes.
 
 - **Must-have pre-flight** (step 2): a hard requirement has no evidence anywhere in the bank. Go
-  or no-go on the whole application, raised before any CV exists, so Seba can decide whether the
+  or no-go on the whole application, raised before any CV exists, so the user can decide whether the
   effort is worth spending.
 - **ATS gaps** (this step): the application is already worth making. These are keywords worth one
   question each, never a reason to reopen the decision to apply.
@@ -176,7 +176,7 @@ nagging.
 `cv-content.json` already exists from step 4. Fold in whatever step 5 changed, then:
 
 ```bash
-python3 .claude/skills/tailor-cv/scripts/build_cv.py <dir>/cv-content.json "<dir>/Sebastian Garcia Romero - <Company>.pdf" --max-compress=0
+python3 .claude/skills/tailor-cv/scripts/build_cv.py <dir>/cv-content.json "<dir>/Your Name - <Company>.pdf" --max-compress=0
 ```
 
 `--max-compress=0` first, so you find out honestly whether it fits.
@@ -242,7 +242,7 @@ build, not in the closing report.
 Run the coverage check a second time, now against the extracted text layer:
 
 ```bash
-python3 .claude/skills/tailor-cv/scripts/check_keywords.py <dir>/keywords.txt "<dir>/Sebastian Garcia Romero - <Company>.pdf.txt" --bank job_search/master-cv.md
+python3 .claude/skills/tailor-cv/scripts/check_keywords.py <dir>/keywords.txt "<dir>/Your Name - <Company>.pdf.txt" --bank job_search/master-cv.md
 ```
 
 This is not a repeat of step 4. Step 4 checked what was selected; this checks what survived
@@ -250,7 +250,7 @@ rendering and the fit ladder. Rung 3 cuts a bullet, and a cut bullet takes its k
 so a keyword that was present in the draft can be missing from the PDF. Any keyword that moved
 between the two runs is something you caused and must account for.
 
-A miss is not automatically a bug: the bank may genuinely have no evidence for it, and Seba may
+A miss is not automatically a bug: the bank may genuinely have no evidence for it, and the user may
 have confirmed as much in step 5, but it must be a decision, not an oversight.
 
 **Eight-second test.** Recruiters decide on the top third of page one in about eight seconds.
@@ -262,7 +262,7 @@ strongest metric sits first.
 Write `notes.md` in the application folder: bullets selected, bullets dropped, rephrasings made,
 which fit-ladder rungs fired, what the version removed or demoted (subtraction check), verbs put
 back after the verb audit, the present/missing keyword list from `check_keywords.py`, the ATS
-gaps put to Seba in step 5, and what he answered, including the gaps he confirmed he has no
+gaps put to the user in step 5, and what they answered, including the gaps they confirmed they have no
 evidence for, so a later run does not ask again.
 
 ## Output layout
@@ -274,18 +274,18 @@ job_search/applications/<company>-<role>/
   cv-content.json
   preview.html
   notes.md
-  Sebastian Garcia Romero - <Company>.pdf
-  Sebastian Garcia Romero - <Company>.pdf.txt
+  Your Name - <Company>.pdf
+  Your Name - <Company>.pdf.txt
 ```
 
-Filename is always `Sebastian Garcia Romero - <Company>.pdf`. Recruiters see the filename. If the
+Filename is always `Your Name - <Company>.pdf`. Recruiters see the filename. If the
 company name contains `&` or another character some upload forms mangle, use a filesystem-safe
 variant in the filename (e.g. "Click and Boat"), the real name still appears inside the CV and
 letter content, this only affects the filename on disk.
 
 ## Language
 
-Default to the language of the job ad. Tell Seba which one you chose and offer the other version.
+Default to the language of the job ad. Tell the user which one you chose and offer the other version.
 For a Spanish ad at an international company the call is genuinely close, so state the tradeoff
 rather than deciding silently.
 
@@ -294,7 +294,7 @@ rather than deciding silently.
 The template replicates the original Google Docs export, verified against it: US Letter
 612x792pt, Arial regular / bold / italic / bold-italic, 14pt name, 10pt body, 9pt company
 descriptors, 28pt side margins, full-width rules under section headings only, dates
-right-aligned. No rule under the header block: the original had one, Seba had it removed.
+right-aligned. No rule under the header block: the original had one, the user had it removed.
 Do not change typography to solve a fit problem. That is what the compression rung is for.
 
 ## ATS constraints already handled by the template
@@ -306,7 +306,7 @@ text, standard section headings, consistent date format. Do not add anything tha
 
 ```json
 {
-  "name": "SEBASTIAN GARCIA ROMERO",
+  "name": "YOUR NAME",
   "contact": ["line 1 (raw HTML allowed, for mailto and linkedin links)", "EU Work Permit"],
   "sections": [
     {"heading": "Professional Summary", "type": "paragraph", "text": "..."},
@@ -322,25 +322,25 @@ text, standard section headings, consistent date format. Do not add anything tha
 }
 ```
 
-Entry fields are all optional. Omit `org` for a second role at the same employer, as with the
-Uber Courier & Marketplace Coordinator entry. `**bold**` and `*italic*` work inside any text.
+Entry fields are all optional. Omit `org` for a second role at the same employer, as with a second
+position at the same company. `**bold**` and `*italic*` work inside any text.
 
 `org` is the company name only. An industry or size descriptor, e.g. "(Technology, $50bn)",
 goes in `desc` (the 9pt line), never appended in parentheses to `org`, a simpler ATS parser can
 store the whole ambiguous string as the employer name.
 
-Contact-line link text never carries a trailing slash: `sebasgarcia.dev`, not `sebasgarcia.dev/`.
+Contact-line link text never carries a trailing slash: `yoursite.example`, not `yoursite.example/`.
 
 **When the contact line links to the personal site, tag the href for traffic tracking.** Change
-only the `href` target from `https://sebasgarcia.dev/` to `https://sebasgarcia.dev/?src=<slug>`.
-The visible text stays exactly `sebasgarcia.dev`, nothing looks different on the printed page.
+only the `href` target from `https://yoursite.example/` to `https://yoursite.example/?src=<slug>`.
+The visible text stays exactly `yoursite.example`, nothing looks different on the printed page.
 
 `<slug>` = the target company's name: lowercase, ASCII only (strip accents/diacritics, e.g. Müller
 → muller), spaces and punctuation replaced with single hyphens (collapse repeats, no leading or
 trailing hyphen), truncated to 40 characters. Examples: Notion → `notion`, "Acme Corp" → `acme-corp`.
 
 ```html
-<a href="https://sebasgarcia.dev/?src=notion">sebasgarcia.dev</a>
+<a href="https://yoursite.example/?src=notion">yoursite.example</a>
 ```
 
 Never open a tagged link in the session's browser. The opt-out `?me=1` is stored per browser, and
